@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Phantasma.RpcClient.DTOs
@@ -42,11 +41,5 @@ namespace Phantasma.RpcClient.DTOs
         Fungible = 1 << 1,
         Finite = 1 << 2,
         Divisible = 1 << 3,
-    }
-
-    public class TokenList
-    {
-        [JsonProperty("tokens")]
-        public List<TokenDto> Tokens { get; set; }
     }
 }

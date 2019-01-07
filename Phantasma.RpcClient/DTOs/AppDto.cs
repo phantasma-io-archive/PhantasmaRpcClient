@@ -20,11 +20,5 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("url")]
         public string Url { get; set; }
     }
-
-    public class AppList 
-    {
-        [JsonProperty("apps")]
-        public List<AppDto> Apps { get; set; }
-    }
 }
 

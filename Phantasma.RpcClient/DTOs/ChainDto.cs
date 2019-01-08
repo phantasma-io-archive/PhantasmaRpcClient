@@ -16,8 +16,5 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("height")]
         public int Height { get; set; }
-
-        [JsonProperty("children")]
-        public List<ChainDto> Children { get; set; }
     }
 }

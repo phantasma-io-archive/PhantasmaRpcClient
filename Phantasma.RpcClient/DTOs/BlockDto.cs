@@ -12,16 +12,16 @@ namespace Phantasma.RpcClient.DTOs
         public string PreviousHash { get; set; }
 
         [JsonProperty("timestamp")]
-        public long Timestamp { get; set; }
+        public uint Timestamp { get; set; }
 
         [JsonProperty("height")]
-        public long Height { get; set; }
+        public uint Height { get; set; }
 
         [JsonProperty("chainAddress")]
         public string ChainAddress { get; set; }
 
         [JsonProperty("nonce")]
-        public long Nonce { get; set; }
+        public uint Nonce { get; set; }
 
         [JsonProperty("payload")]
         public string Payload { get; set; }

@@ -9,7 +9,7 @@ namespace Phantasma.RpcClient.DTOs
         public string Address { get; set; }
 
         [JsonProperty("amount")]
-        public long Amount { get; set; }
+        public uint Amount { get; set; }
 
         [JsonProperty("txs")]
         public List<TransactionDto> Txs { get; set; } = new List<TransactionDto>();

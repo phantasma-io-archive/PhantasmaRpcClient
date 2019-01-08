@@ -8,10 +8,10 @@ namespace Phantasma.RpcClient.DTOs
         public string Hash { get; set; }
 
         [JsonProperty("confirmations")]
-        public int Confirmations { get; set; }
+        public uint Confirmations { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; }
+        public uint Height { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }

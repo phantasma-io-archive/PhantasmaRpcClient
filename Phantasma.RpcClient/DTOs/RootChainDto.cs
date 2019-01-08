@@ -11,6 +11,6 @@ namespace Phantasma.RpcClient.DTOs
         public string Address { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; }
+        public uint Height { get; set; }
     }
 }

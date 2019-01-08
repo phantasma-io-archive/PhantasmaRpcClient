@@ -20,9 +20,6 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("chainAddress")]
         public string ChainAddress { get; set; }
 
-        [JsonProperty("nonce")]
-        public uint Nonce { get; set; }
-
         [JsonProperty("payload")]
         public string Payload { get; set; }
 

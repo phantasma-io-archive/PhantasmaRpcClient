@@ -28,9 +28,6 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("flags")]
         public TokenFlags Flags { get; set; }
-
-       // [JsonProperty("chains")]
-        //public List<BalanceSheetDto> Chains { get; set; } //todo
     }
 
     [Flags]

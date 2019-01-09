@@ -23,8 +23,8 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("maxSupply")]
         public string MaxSupply { get; set; }
 
-        [JsonProperty("owner")]
-        public string Owner { get; set; }
+        [JsonProperty("ownerAddress")]
+        public string OwnerAddress { get; set; }
 
         [JsonProperty("flags")]
         public TokenFlags Flags { get; set; }

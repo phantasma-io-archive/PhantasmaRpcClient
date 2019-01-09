@@ -5,14 +5,11 @@ namespace Phantasma.RpcClient.DTOs
 {
     public class TransactionDto
     {
-        [JsonProperty("txid")]
+        [JsonProperty("hash")]
         public string Txid { get; set; }
 
         [JsonProperty("chainAddress")]
         public string ChainAddress { get; set; }
-
-        [JsonProperty("chainName")]
-        public string ChainName { get; set; }
 
         [JsonProperty("timestamp")]
         public uint Timestamp { get; set; }
@@ -20,11 +17,11 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("blockHeight")]
         public uint BlockHeight { get; set; }
 
-        [JsonProperty("gasLimit")]
-        public decimal GasLimit { get; set; }
+        //[JsonProperty("gasLimit")]
+        //public decimal GasLimit { get; set; }
 
-        [JsonProperty("gasPrice")]
-        public decimal GasPrice { get; set; }
+        //[JsonProperty("gasPrice")]
+        //public decimal GasPrice { get; set; }
 
         [JsonProperty("script")]
         public string Script { get; set; }

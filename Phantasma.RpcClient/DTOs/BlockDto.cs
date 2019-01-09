@@ -26,8 +26,8 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("txs")]
         public List<TransactionDto> Txs { get; set; }
 
-        [JsonProperty("minerAddress")]
-        public string MinerAddress { get; set; }
+        [JsonProperty("validatorAddress")]
+        public string ValidatorAddress { get; set; }
 
         [JsonProperty("reward")]
         public decimal Reward { get; set; }

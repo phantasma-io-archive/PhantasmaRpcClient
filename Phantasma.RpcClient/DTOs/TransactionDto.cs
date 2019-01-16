@@ -26,6 +26,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("script")]
         public string Script { get; set; }
 
+        [JsonProperty("result")]
+        public string Result { get; set; }
+
         [JsonProperty("events")]
         public List<EventDto> Events { get; set; }
     }

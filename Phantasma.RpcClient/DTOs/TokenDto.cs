@@ -14,9 +14,6 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("decimals")]
         public int Decimals { get; set; }
 
-        [JsonProperty("isFungible")]
-        public bool Fungible { get; set; }
-
         [JsonProperty("currentSupply")]
         public string CurrentSupply { get; set; }
 

@@ -7,7 +7,7 @@ namespace Phantasma.RpcClient.Api
 {
     public class PhantasmaGetTxByHash : RpcRequestResponseHandler<TransactionDto>
     {
-        public PhantasmaGetTxByHash(IClient client) : base(client, ApiMethods.getTransactionByHash.ToString()) { }
+        public PhantasmaGetTxByHash(IClient client) : base(client, ApiMethods.getTransaction.ToString()) { }
 
         public Task<TransactionDto> SendRequestAsync(string txHash, object id = null)
         {

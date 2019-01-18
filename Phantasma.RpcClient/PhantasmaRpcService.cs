@@ -14,6 +14,8 @@ namespace Phantasma.RpcClient
 
             GetApplications = new PhantasmaGetApplications(client);
 
+            GetAuctions = new PhantasmaGetAuctions(client);
+
             GetBlockByHash = new PhantasmaGetBlockByHash(client);
             GetBlockByHashSerialized = new PhantasmaGetBlockByHashSerialized(client);
             GetBlockByHeight = new PhantasmaGetBlockByHeight(client);
@@ -22,9 +24,9 @@ namespace Phantasma.RpcClient
             GetBlockTxCountByHash = new PhantasmaGetBlockTxCountByHash(client);
 
             GetChains = new PhantasmaGetChains(client);
-            GetRootChain = new PhantasmaGetRootChain(client);
 
             GetTokens = new PhantasmaGetTokens(client);
+            GetTokenData = new PhantasmaGetTokenData(client);
             GetTokenTransfers = new PhantasmaGetTokenTransfers(client);
             GetTokenTransferCount = new PhantasmaGetTokenTransferCount(client);
 
@@ -39,6 +41,7 @@ namespace Phantasma.RpcClient
         public PhantasmaGetAddressTxs GetAddressTxs { get; }
         public PhantasmaGetAddressTxCount GetAddressTxCount { get; }
         public PhantasmaGetApplications GetApplications { get; }
+        public PhantasmaGetAuctions GetAuctions { get; }
         public PhantasmaGetBlockByHash GetBlockByHash { get; }
         public PhantasmaGetBlockByHashSerialized GetBlockByHashSerialized { get; }
         public PhantasmaGetBlockByHeight GetBlockByHeight { get; }
@@ -47,9 +50,9 @@ namespace Phantasma.RpcClient
         public PhantasmaGetBlockTxCountByHash GetBlockTxCountByHash { get; }
         public PhantasmaGetChains GetChains { get; }
         public PhantasmaGetTokens GetTokens { get; }
+        public PhantasmaGetTokenData GetTokenData { get; }
         public PhantasmaGetTokenTransfers GetTokenTransfers { get; }
         public PhantasmaGetTokenTransferCount GetTokenTransferCount { get; set; }
-        public PhantasmaGetRootChain GetRootChain { get; }
         public PhantasmaGetTxByBlockHashAndIndex GetTxByBlockHashAndIndex { get; }
         public PhantasmaGetTxByHash GetTxByHash { get; }
         public PhantasmaGetTxConfirmations GetTxConfirmations { get; set; }

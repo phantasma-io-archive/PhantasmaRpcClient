@@ -8,6 +8,7 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetAddressTxs GetAddressTxs { get; }
         PhantasmaGetAddressTxCount GetAddressTxCount { get; }
         PhantasmaGetApplications GetApplications { get; }
+        PhantasmaGetAuctions GetAuctions { get; }
         PhantasmaGetBlockByHash GetBlockByHash { get; }
         PhantasmaGetBlockByHashSerialized GetBlockByHashSerialized { get; }
         PhantasmaGetBlockByHeight GetBlockByHeight { get; }
@@ -16,9 +17,9 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetBlockTxCountByHash GetBlockTxCountByHash { get; }
         PhantasmaGetChains GetChains { get; }
         PhantasmaGetTokens GetTokens { get; }
+        PhantasmaGetTokenData GetTokenData { get; }
         PhantasmaGetTokenTransfers GetTokenTransfers { get; }
         PhantasmaGetTokenTransferCount GetTokenTransferCount { get; set; }
-        PhantasmaGetRootChain GetRootChain { get; }
         PhantasmaGetTxByBlockHashAndIndex GetTxByBlockHashAndIndex { get; }
         PhantasmaGetTxByHash GetTxByHash { get; }
         PhantasmaGetTxConfirmations GetTxConfirmations { get; }

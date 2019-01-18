@@ -1,5 +1,6 @@
 ﻿using Phantasma.RpcClient.Api;
 using Phantasma.RpcClient.Client;
+using Phantasma.RpcClient.Infrastructure;
 using Phantasma.RpcClient.Interfaces;
 
 namespace Phantasma.RpcClient

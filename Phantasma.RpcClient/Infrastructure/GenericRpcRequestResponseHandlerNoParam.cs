@@ -2,7 +2,7 @@
 using Phantasma.RpcClient.Client;
 using IClient = Phantasma.RpcClient.Client.IClient;
 
-namespace Phantasma.RpcClient
+namespace Phantasma.RpcClient.Infrastructure
 {
     public class GenericRpcRequestResponseHandlerNoParam<TResponse> : RpcRequestResponseHandlerNoParam<TResponse>
     {

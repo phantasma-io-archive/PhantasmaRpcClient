@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Phantasma.RpcClient.Helpers;
 
 namespace Phantasma.RpcClient.DTOs
 {

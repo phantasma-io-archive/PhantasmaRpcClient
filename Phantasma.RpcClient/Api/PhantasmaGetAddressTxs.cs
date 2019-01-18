@@ -5,23 +5,26 @@ using Phantasma.RpcClient.DTOs;
 
 namespace Phantasma.RpcClient.Api
 {
-    public class PhantasmaGetAddressTxs : RpcRequestResponseHandler<AccountTransactionsDto>
+    public class PhantasmaGetAddressTxs : RpcRequestResponseHandler<PaginatedAccountTransactionsDto>
     {
         public PhantasmaGetAddressTxs(IClient client) : base(client, ApiMethods.getAddressTransactions.ToString()) { }
 
-        public Task<AccountTransactionsDto> SendRequestAsync(string address, int amount, object id = null)
+        public Task<PaginatedAccountTransactionsDto> SendRequestAsync(string address, int page, int pageSize, object id = null)
         {
             if (address == null) throw new ArgumentNullException(nameof(address));
-            if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
-            return SendRequestAsync(id, address, amount);
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+            if (pageSize <= 0) throw new ArgumentOutOfRangeException(nameof(pageSize));
+
+            return SendRequestAsync(id, address, page, pageSize);
         }
 
-        public RpcRequest BuildRequest(string address, int amount, object id = null)
+        public RpcRequest BuildRequest(string address, int page, int pageSize, object id = null)
         {
             if (address == null) throw new ArgumentNullException(nameof(address));
-            if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+            if (pageSize <= 0) throw new ArgumentOutOfRangeException(nameof(pageSize));
 
-            return BuildRequest(id, address, 10);
+            return BuildRequest(id, address, page, pageSize);
         }
     }
 }

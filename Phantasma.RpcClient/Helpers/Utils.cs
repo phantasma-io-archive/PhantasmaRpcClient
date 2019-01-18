@@ -4,7 +4,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Phantasma.RpcClient
+namespace Phantasma.RpcClient.Helpers
 {
     public static class JsonUtils
     {

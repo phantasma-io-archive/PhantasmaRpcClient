@@ -16,6 +16,7 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("error")]
         public string Error { get; set; }
 
+        [JsonIgnore]
         public bool IsConfirmed => Confirmations >= 1;
     }
 }

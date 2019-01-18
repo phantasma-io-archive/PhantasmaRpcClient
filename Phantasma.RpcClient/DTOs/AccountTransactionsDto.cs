@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Phantasma.RpcClient.Helpers;
 
 namespace Phantasma.RpcClient.DTOs
 {
@@ -7,9 +8,6 @@ namespace Phantasma.RpcClient.DTOs
     {
         [JsonProperty("address")]
         public string Address { get; set; }
-
-        [JsonProperty("amount")]
-        public uint Amount { get; set; }
 
         [JsonProperty("txs")]
         public List<TransactionDto> Txs { get; set; } = new List<TransactionDto>();

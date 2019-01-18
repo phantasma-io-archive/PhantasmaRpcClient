@@ -1,7 +1,7 @@
 ﻿using System;
 using IClient = Phantasma.RpcClient.Client.IClient;
 
-namespace Phantasma.RpcClient
+namespace Phantasma.RpcClient.Infrastructure
 {
     public class RpcClientWrapper
     {

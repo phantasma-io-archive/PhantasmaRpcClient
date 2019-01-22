@@ -30,5 +30,8 @@ namespace Phantasma.RpcClient.DTOs
         FriendRemove,
         GasEscrow,
         GasPayment,
+        AuctionCreated,
+        AuctionCancelled,
+        AuctionFilled,
     }
 }

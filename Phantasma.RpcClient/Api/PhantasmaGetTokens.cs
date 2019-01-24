@@ -5,7 +5,7 @@ using Phantasma.RpcClient.Infrastructure;
 
 namespace Phantasma.RpcClient.Api
 {
-    public class PhantasmaGetTokens : GenericRpcRequestResponseHandlerNoParam<List<TokenDto>>
+    public class PhantasmaGetTokens : GenericRpcRequestResponseHandlerNoParam<IList<TokenDto>>
     {
         public PhantasmaGetTokens(IClient client) : base(client, ApiMethods.getTokens.ToString()) { }
     }

@@ -35,5 +35,7 @@ namespace Phantasma.RpcClient.DTOs
         Fungible = 1 << 1,
         Finite = 1 << 2,
         Divisible = 1 << 3,
+        Native = 1 << 4,
+        External = 1 << 5,
     }
 }

@@ -13,8 +13,11 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("endDate")]
         public uint EndDate;
 
-        [JsonProperty("Symbol")]
-        public string Symbol;
+        [JsonProperty("baseSymbol")]
+        public string BaseSymbol;
+
+        [JsonProperty("quoteSymbol")]
+        public string QuoteSymbol;
 
         [JsonProperty("TokenID")]
         public string TokenId;

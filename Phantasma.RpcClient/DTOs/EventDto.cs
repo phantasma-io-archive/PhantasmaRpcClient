@@ -13,10 +13,10 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("kind")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public EvtKind EvtKind { get; set; }
+        public EventKind EventKind { get; set; }
     }
 
-    public enum EvtKind
+    public enum EventKind
     {
         ChainCreate,
         TokenCreate,
@@ -33,5 +33,6 @@ namespace Phantasma.RpcClient.DTOs
         AuctionCreated,
         AuctionCancelled,
         AuctionFilled,
+        Metadata,
     }
 }

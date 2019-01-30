@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Phantasma.RpcClient.DTOs
@@ -25,6 +26,9 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("flags")]
         public TokenFlags Flags { get; set; }
+
+        [JsonProperty("metadataList")]
+        public List<TokenMetadataDto> MetadataList { get; set; }
     }
 
     [Flags]

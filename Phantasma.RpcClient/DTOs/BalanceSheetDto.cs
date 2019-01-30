@@ -14,6 +14,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("symbol")]
         public string Symbol { get; set; }
 
+        [JsonProperty("decimals")]
+        public int Decimals { get; set; }
+
         [JsonProperty("ids")]
         public List<string> Ids { get; set; } = new List<string>();
     }

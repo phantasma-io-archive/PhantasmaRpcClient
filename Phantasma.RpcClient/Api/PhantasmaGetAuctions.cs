@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
 using Phantasma.RpcClient.Client;
 using Phantasma.RpcClient.DTOs;
 
 namespace Phantasma.RpcClient.Api
 {
-    public class PhantasmaGetAuctions : RpcRequestResponseHandler<IList<AuctionDto>>
+    public class PhantasmaGetAuctions : RpcRequestResponseHandler<PaginatedAuctionsDto>
     {
         public PhantasmaGetAuctions(IClient client) : base(client, ApiMethods.getAuctions.ToString()) { }
 
-        public Task<IList<AuctionDto>> SendRequestAsync(string tokenSymbol = null, object id = null)
+        public Task<PaginatedAuctionsDto> SendRequestAsync(int page, int pageSize, string tokenSymbol = null, object id = null)
         {
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+            if (pageSize <= 0) throw new ArgumentOutOfRangeException(nameof(pageSize));
+
             if (string.IsNullOrEmpty(tokenSymbol))
             {
                 return SendRequestAsync(id);
@@ -18,8 +21,11 @@ namespace Phantasma.RpcClient.Api
             return SendRequestAsync(id, tokenSymbol);
         }
 
-        public RpcRequest BuildRequest(string tokenSymbol = null, object id = null)
+        public RpcRequest BuildRequest(int page, int pageSize, string tokenSymbol = null, object id = null)
         {
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+            if (pageSize <= 0) throw new ArgumentOutOfRangeException(nameof(pageSize));
+
             if (string.IsNullOrEmpty(tokenSymbol))
             {
                 return BuildRequest(id);

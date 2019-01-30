@@ -7,6 +7,7 @@
         getAddressTransactions,
         getAddressTxCount,
         getAuctions,
+        getAuctionsCount,
         getBlockByHash,
         getRawBlockByHash,
         getBlockByHeight,

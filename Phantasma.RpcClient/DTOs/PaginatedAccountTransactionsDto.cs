@@ -4,7 +4,7 @@ namespace Phantasma.RpcClient.DTOs
 {
     public class PaginatedAccountTransactionsDto
     {
-        [JsonProperty("results")]
+        [JsonProperty("result")]
         public AccountTransactionsDto AccountTransactionsDto { get; set; }
 
         [JsonProperty("page")]

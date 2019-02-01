@@ -25,6 +25,8 @@ namespace Phantasma.RpcClient.DTOs
         TokenMint,
         TokenBurn,
         TokenEscrow,
+        TokenStake,
+        TokenUnstake,
         AddressRegister,
         FriendAdd,
         FriendRemove,

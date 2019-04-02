@@ -25,5 +25,6 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetTxByHash GetTxByHash { get; }
         PhantasmaGetTxConfirmations GetTxConfirmations { get; }
         PhantasmaSendRawTx SendRawTx { get; }
+        PhantasmaInvokeRawScript InvokeRawScript { get; }
     }
 }

@@ -37,6 +37,7 @@ namespace Phantasma.RpcClient
             GetTxConfirmations = new PhantasmaGetTxConfirmations(client);
 
             SendRawTx = new PhantasmaSendRawTx(client);
+            InvokeRawScript = new PhantasmaInvokeRawScript(client);
         }
 
         public PhantasmaGetAccount GetAccount { get; }
@@ -60,5 +61,6 @@ namespace Phantasma.RpcClient
         public PhantasmaGetTxByHash GetTxByHash { get; }
         public PhantasmaGetTxConfirmations GetTxConfirmations { get; set; }
         public PhantasmaSendRawTx SendRawTx { get; }
+        public PhantasmaInvokeRawScript InvokeRawScript { get; }
     }
 }

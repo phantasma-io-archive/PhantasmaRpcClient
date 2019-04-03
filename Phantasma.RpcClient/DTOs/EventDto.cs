@@ -27,14 +27,19 @@ namespace Phantasma.RpcClient.DTOs
         TokenEscrow,
         TokenStake,
         TokenUnstake,
+        TokenClaim,
+        MasterDemote,
+        MasterPromote,
         AddressRegister,
-        FriendAdd,
-        FriendRemove,
+        AddressAdd,
+        AddressRemove,
         GasEscrow,
         GasPayment,
         AuctionCreated,
         AuctionCancelled,
         AuctionFilled,
         Metadata,
+        FriendAdd,
+        FriendRemove
     }
 }

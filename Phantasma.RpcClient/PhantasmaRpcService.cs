@@ -34,10 +34,11 @@ namespace Phantasma.RpcClient
 
             GetTxByBlockHashAndIndex = new PhantasmaGetTxByBlockHashAndIndex(client);
             GetTxByHash = new PhantasmaGetTxByHash(client);
-            GetTxConfirmations = new PhantasmaGetTxConfirmations(client);
 
             SendRawTx = new PhantasmaSendRawTx(client);
             InvokeRawScript = new PhantasmaInvokeRawScript(client);
+
+            LookUpName = new PhantasmaLookUpName(client);
         }
 
         public PhantasmaGetAccount GetAccount { get; }
@@ -59,7 +60,7 @@ namespace Phantasma.RpcClient
         public PhantasmaGetTokenTransferCount GetTokenTransferCount { get; set; }
         public PhantasmaGetTxByBlockHashAndIndex GetTxByBlockHashAndIndex { get; }
         public PhantasmaGetTxByHash GetTxByHash { get; }
-        public PhantasmaGetTxConfirmations GetTxConfirmations { get; set; }
+        public PhantasmaLookUpName LookUpName { get; }
         public PhantasmaSendRawTx SendRawTx { get; }
         public PhantasmaInvokeRawScript InvokeRawScript { get; }
     }

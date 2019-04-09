@@ -15,8 +15,6 @@
         getBlockHeight,
         getBlockTransactionCountByHash,
         getChains,
-        getConfirmations,
-        getRootChain,
         getTransaction,
         getTransactionByBlockHashAndIndex,
         getTokens,
@@ -24,6 +22,7 @@
         getTokenTransfers,
         getTokenTransferCount,
         sendRawTransaction,
+        lookUpName,
         invokeRawScript,
     }
 }

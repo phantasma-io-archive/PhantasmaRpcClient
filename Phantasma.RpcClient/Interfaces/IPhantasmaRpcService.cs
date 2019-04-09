@@ -23,7 +23,7 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetTokenTransferCount GetTokenTransferCount { get; set; }
         PhantasmaGetTxByBlockHashAndIndex GetTxByBlockHashAndIndex { get; }
         PhantasmaGetTxByHash GetTxByHash { get; }
-        PhantasmaGetTxConfirmations GetTxConfirmations { get; }
+        PhantasmaLookUpName LookUpName { get; }
         PhantasmaSendRawTx SendRawTx { get; }
         PhantasmaInvokeRawScript InvokeRawScript { get; }
     }

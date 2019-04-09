@@ -17,11 +17,8 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("blockHeight")]
         public uint BlockHeight { get; set; }
 
-        //[JsonProperty("gasLimit")]
-        //public decimal GasLimit { get; set; }
-
-        //[JsonProperty("gasPrice")]
-        //public decimal GasPrice { get; set; }
+        [JsonProperty("blockHash")]
+        public string BlockHash { get; set; }
 
         [JsonProperty("script")]
         public string Script { get; set; }

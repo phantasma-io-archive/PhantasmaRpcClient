@@ -24,5 +24,11 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("Price")]
         public string Price;
+
+        [JsonProperty("rom")]
+        public string Rom;
+
+        [JsonProperty("ram")]
+        public string Ram;
     }
 }

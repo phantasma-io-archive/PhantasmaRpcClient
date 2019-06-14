@@ -28,5 +28,8 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("events")]
         public List<EventDto> Events { get; set; }
+
+        [JsonProperty("fee")]
+        public string Fee { get; set; }
     }
 }

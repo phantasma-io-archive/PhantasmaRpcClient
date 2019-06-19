@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Phantasma.RpcClient.DTOs
 {
@@ -15,5 +16,8 @@ namespace Phantasma.RpcClient.DTOs
 
         [JsonProperty("height")]
         public uint Height { get; set; }
+
+        [JsonProperty("contracts")]
+        public IList<string> Contracts { get; set; }
     }
 }

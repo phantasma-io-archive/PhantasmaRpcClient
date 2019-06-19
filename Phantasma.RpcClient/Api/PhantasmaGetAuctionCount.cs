@@ -7,14 +7,14 @@ namespace Phantasma.RpcClient.Api
     {
         public PhantasmaGetAuctionCount(IClient client) : base(client, ApiMethods.getAuctionsCount.ToString()) { }
 
-        public Task<int> SendRequestAsync(string tokenSymbol = null, object id = null)
+        public Task<int> SendRequestAsync(string chain, string tokenSymbol = null, object id = null)
         {
-            return string.IsNullOrEmpty(tokenSymbol) ? SendRequestAsync(id) : SendRequestAsync(id, tokenSymbol);
+            return SendRequestAsync(id, chain, tokenSymbol);
         }
 
-        public RpcRequest BuildRequest(string tokenSymbol = null, object id = null)
+        public RpcRequest BuildRequest(string chain, string tokenSymbol = null, object id = null)
         {
-            return string.IsNullOrEmpty(tokenSymbol) ? BuildRequest(id) : BuildRequest(id, tokenSymbol);
+            return BuildRequest(id, chain, tokenSymbol);
         }
     }
 }

@@ -4,6 +4,7 @@ namespace Phantasma.RpcClient.Interfaces
 {
     public interface IPhantasmaRpcService
     {
+        PhantasmaGetABI GetABI { get; }
         PhantasmaGetAccount GetAccount { get; }
         PhantasmaGetAddressTxs GetAddressTxs { get; }
         PhantasmaGetAddressTxCount GetAddressTxCount { get; }

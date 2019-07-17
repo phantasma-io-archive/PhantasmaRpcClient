@@ -2,6 +2,7 @@
 {
     public enum ApiMethods
     {
+        getABI,
         getAccount,
         getApps,
         getAddressTransactions,

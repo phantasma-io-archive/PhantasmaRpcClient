@@ -9,6 +9,7 @@ namespace Phantasma.RpcClient
     {
         public PhantasmaRpcService(IClient client) : base(client)
         {
+            GetABI = new PhantasmaGetABI(client);
             GetAccount = new PhantasmaGetAccount(client);
             GetAddressTxs = new PhantasmaGetAddressTxs(client);
             GetAddressTxCount = new PhantasmaGetAddressTxCount(client);
@@ -41,6 +42,7 @@ namespace Phantasma.RpcClient
             LookUpName = new PhantasmaLookUpName(client);
         }
 
+        public PhantasmaGetABI GetABI { get; }
         public PhantasmaGetAccount GetAccount { get; }
         public PhantasmaGetAddressTxs GetAddressTxs { get; }
         public PhantasmaGetAddressTxCount GetAddressTxCount { get; }

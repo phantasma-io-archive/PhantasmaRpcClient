@@ -12,7 +12,7 @@ namespace Phantasma.RpcClient.DTOs
         public string ReturnType { get; set; }
 
         [JsonProperty("parameters")]
-        public List<string> Parameters { get; set; } = new List<string>();
+        public List<ABIMethodParamDto> Parameters { get; set; } = new List<ABIMethodParamDto>();
 
     }
 }

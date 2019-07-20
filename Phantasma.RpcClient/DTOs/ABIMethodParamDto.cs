@@ -8,6 +8,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("vmtype")]
+        public string VMType { get; set; }
+
         [JsonProperty("type")]
         public string Type { get; set; }
     }

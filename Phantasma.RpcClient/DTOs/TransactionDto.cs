@@ -14,6 +14,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("timestamp")]
         public uint Timestamp { get; set; }
 
+        [JsonProperty("confirmations")]
+        public uint Confirmations { get; set; }
+
         [JsonProperty("blockHeight")]
         public uint BlockHeight { get; set; }
 

@@ -43,5 +43,7 @@ namespace Phantasma.RpcClient.DTOs
         Stakable = 1 << 5,
         Stable = 1 << 6,
         External = 1 << 7,
+        Burnable = 1 << 8,
+        Swappable = 1 << 9,
     }
 }

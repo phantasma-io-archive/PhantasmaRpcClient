@@ -12,6 +12,12 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("stake")]
+        public string Stake { get; set; }
+
+        [JsonProperty("relay")]
+        public string Relay { get; set; }
+
         [JsonProperty("balances")]
         public List<BalanceSheetDto> Tokens { get; set; } = new List<BalanceSheetDto>();
 

@@ -11,6 +11,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("data")]
         public string Data { get; set; }
 
+        [JsonProperty("contract")]
+        public string Contract { get; set; }
+
         [JsonProperty("kind")]
         [JsonConverter(typeof(StringEnumConverter))]
         public EventKind EventKind { get; set; }

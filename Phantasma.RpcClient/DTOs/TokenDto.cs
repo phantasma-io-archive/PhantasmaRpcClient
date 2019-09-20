@@ -27,7 +27,7 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("flags")]
         public TokenFlags Flags { get; set; }
 
-        [JsonProperty("metadataList", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public List<TokenMetadataDto> MetadataList { get; set; }
     }
 

@@ -31,7 +31,7 @@ namespace Phantasma.RpcClient.DTOs
         public string ValidatorAddress { get; set; }
 
         [JsonProperty("reward")]
-        public decimal Reward { get; set; }
+        public string Reward { get; set; }
 
 
         public static BlockDto FromJson(string json) => JsonConvert.DeserializeObject<BlockDto>(json, JsonUtils.Settings);

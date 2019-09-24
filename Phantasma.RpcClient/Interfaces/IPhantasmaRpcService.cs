@@ -18,6 +18,7 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetBlockHeight GetBlockHeight { get; }
         PhantasmaGetBlockTxCountByHash GetBlockTxCountByHash { get; }
         PhantasmaGetChains GetChains { get; }
+        PhantasmaGetPeers GetPeers { get; }
         PhantasmaGetPlatforms GetPlatforms { get; }
         PhantasmaGetTokens GetTokens { get; }
         PhantasmaGetTokenData GetTokenData { get; }

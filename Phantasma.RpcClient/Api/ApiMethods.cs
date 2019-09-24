@@ -16,6 +16,7 @@
         getBlockHeight,
         getBlockTransactionCountByHash,
         getChains,
+        getPeers,
         getPlatforms,
         getTransaction,
         getTransactionByBlockHashAndIndex,

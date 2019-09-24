@@ -27,6 +27,7 @@ namespace Phantasma.RpcClient
             GetBlockTxCountByHash = new PhantasmaGetBlockTxCountByHash(client);
 
             GetChains = new PhantasmaGetChains(client);
+            GetPeers = new PhantasmaGetPeers(client);
             GetPlatforms = new PhantasmaGetPlatforms(client);
             GetTokens = new PhantasmaGetTokens(client);
             GetTokenData = new PhantasmaGetTokenData(client);
@@ -56,6 +57,7 @@ namespace Phantasma.RpcClient
         public PhantasmaGetBlockHeight GetBlockHeight { get; }
         public PhantasmaGetBlockTxCountByHash GetBlockTxCountByHash { get; }
         public PhantasmaGetChains GetChains { get; }
+        public PhantasmaGetPeers GetPeers { get; }
         public PhantasmaGetPlatforms GetPlatforms { get; }
         public PhantasmaGetTokens GetTokens { get; }
         public PhantasmaGetTokenData GetTokenData { get; }

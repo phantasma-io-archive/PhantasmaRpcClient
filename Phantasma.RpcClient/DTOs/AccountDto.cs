@@ -21,9 +21,6 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("balances")]
         public List<BalanceSheetDto> Tokens { get; set; } = new List<BalanceSheetDto>();
 
-        [JsonProperty("interops")]
-        public List<InteropAccountDto> Interops { get; set; } = new List<InteropAccountDto>();
-
         public static AccountDto FromJson(string json) => JsonConvert.DeserializeObject<AccountDto>(json, JsonUtils.Settings);
 
         public string ToJson() => JsonConvert.SerializeObject(this, JsonUtils.Settings);

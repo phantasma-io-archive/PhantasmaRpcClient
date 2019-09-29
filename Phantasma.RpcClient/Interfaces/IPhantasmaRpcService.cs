@@ -20,6 +20,7 @@ namespace Phantasma.RpcClient.Interfaces
         PhantasmaGetChains GetChains { get; }
         PhantasmaGetPeers GetPeers { get; }
         PhantasmaGetPlatforms GetPlatforms { get; }
+        PhantasmaGetSwapsForAddress GetSwapsForAddress { get; }
         PhantasmaGetTokens GetTokens { get; }
         PhantasmaGetTokenData GetTokenData { get; }
         PhantasmaGetTokenTransfers GetTokenTransfers { get; }

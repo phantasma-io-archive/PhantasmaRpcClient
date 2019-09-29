@@ -24,6 +24,7 @@
         getTokenData,
         getTokenTransfers,
         getTokenTransferCount,
+        getSwapsForAddress,
         sendRawTransaction,
         lookUpName,
         invokeRawScript,

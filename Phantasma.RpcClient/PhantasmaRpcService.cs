@@ -33,7 +33,7 @@ namespace Phantasma.RpcClient
             GetTokenData = new PhantasmaGetTokenData(client);
             GetTokenTransfers = new PhantasmaGetTokenTransfers(client);
             GetTokenTransferCount = new PhantasmaGetTokenTransferCount(client);
-
+            GetSwapsForAddress = new PhantasmaGetSwapsForAddress(client);
             GetTxByBlockHashAndIndex = new PhantasmaGetTxByBlockHashAndIndex(client);
             GetTxByHash = new PhantasmaGetTxByHash(client);
 
@@ -65,6 +65,7 @@ namespace Phantasma.RpcClient
         public PhantasmaGetTokenTransferCount GetTokenTransferCount { get; set; }
         public PhantasmaGetTxByBlockHashAndIndex GetTxByBlockHashAndIndex { get; }
         public PhantasmaGetTxByHash GetTxByHash { get; }
+        public PhantasmaGetSwapsForAddress GetSwapsForAddress { get; }
         public PhantasmaLookUpName LookUpName { get; }
         public PhantasmaSendRawTx SendRawTx { get; }
         public PhantasmaInvokeRawScript InvokeRawScript { get; }

@@ -54,7 +54,7 @@ namespace Phantasma.RpcClient.DTOs
         ValidatorElect = 31,
         ValidatorRemove = 32,
         ValidatorSwitch = 33,
-        BrokerRequest = 34,
+        PackedNFT = 34,
         ValueCreate = 35,
         ValueUpdate = 36,
         PollCreated = 37,
@@ -66,7 +66,7 @@ namespace Phantasma.RpcClient.DTOs
         LeaderboardCreate = 43,
         LeaderboardInsert = 44,
         LeaderboardReset = 45,
-        Metadata = 47,
-        Custom = 48,
+        PlatformCreate = 46,
+        TransactionSettle = 47,
     }
 }

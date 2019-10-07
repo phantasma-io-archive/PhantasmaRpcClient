@@ -7,6 +7,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("Url")]
         public string Url;
 
+        [JsonProperty("version")]
+        public string Version;
+
         [JsonProperty("flags")]
         public string Flags;
 

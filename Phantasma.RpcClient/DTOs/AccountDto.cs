@@ -15,6 +15,9 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("stake")]
         public string Stake { get; set; }
 
+        [JsonProperty("unclaimed")]
+        public string Unclaimed { get; set; }
+
         [JsonProperty("relay")]
         public string Relay { get; set; }
 

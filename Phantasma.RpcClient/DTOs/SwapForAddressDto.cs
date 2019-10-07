@@ -44,7 +44,6 @@ namespace Phantasma.RpcClient.DTOs
         Sending,
         Link,
         Settle,
-        Resettle,
         Broker,
         Receive,
         Platform,

@@ -42,7 +42,7 @@ namespace Phantasma.RpcClient.DTOs
         Fuel = 1 << 4,
         Stakable = 1 << 5,
         Fiat = 1 << 6,
-        External = 1 << 7,
+        Foreign = 1 << 7,
         Burnable = 1 << 8,
     }
 }

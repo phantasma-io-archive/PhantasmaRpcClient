@@ -5,7 +5,7 @@ namespace Phantasma.RpcClient.Client
 {
     public abstract class ClientBase : IClient
     {
-        public static TimeSpan ConnectionTimeout { get; set; } = TimeSpan.FromSeconds(20.0);
+        public static TimeSpan ConnectionTimeout { get; set; } = TimeSpan.FromSeconds(60.0);
 
         public async Task<T> SendRequestAsync<T>(RpcRequest request, string route = null)
         {            

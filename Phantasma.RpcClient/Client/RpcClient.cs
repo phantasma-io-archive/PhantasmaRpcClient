@@ -113,7 +113,7 @@ namespace Phantasma.RpcClient.Client
             }
             catch (TaskCanceledException ex)
             {
-                throw new RpcClientTimeoutException($"Rpc timeout afer {ConnectionTimeout} milliseconds", ex);
+                throw new RpcClientTimeoutException($"Rpc timeout after {ConnectionTimeout} milliseconds", ex);
             }
             catch (Exception ex)
             {
@@ -145,7 +145,7 @@ namespace Phantasma.RpcClient.Client
         {
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
             var httpClient = _httpClientHandler != null ? new HttpClient(_httpClientHandler) : new HttpClient();
-            
+
             httpClient.DefaultRequestHeaders.Authorization = _authHeaderValue;
             httpClient.BaseAddress = _baseUrl;
             _httpClientLastCreatedAt = DateTime.UtcNow;

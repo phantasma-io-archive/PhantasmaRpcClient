@@ -16,6 +16,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
         List<PlatformResult> ApiV1GetPlatformsGet ();
+        
+        PlatformResult ApiV1GetPlatform (string platform);
+        
+        PlatformResult ApiV1GetInterop (string platform);
     }
   
     /// <summary>
@@ -77,7 +81,6 @@ namespace IO.Swagger.Api
         /// <returns>List&lt;PlatformResult&gt;</returns>
         public List<PlatformResult> ApiV1GetPlatformsGet ()
         {
-    
             var path = "/api/v1/GetPlatforms";
             path = path.Replace("{format}", "json");
                 
@@ -100,6 +103,68 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<PlatformResult>) ApiClient.Deserialize(response.Content, typeof(List<PlatformResult>), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <returns>List&lt;PlatformResult&gt;</returns>
+        public PlatformResult ApiV1GetPlatform (string platform)
+        {
+            var path = "/api/v1/GetPlatform";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (platform != null) queryParams.Add("platform", ApiClient.ParameterToString(platform)); // query parameter
+
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <returns>List&lt;PlatformResult&gt;</returns>
+        public PlatformResult ApiV1GetInterop (string platform)
+        {
+            var path = "/api/v1/GetInterop";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (platform != null) queryParams.Add("platform", ApiClient.ParameterToString(platform)); // query parameter
+
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetInterop: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetInterop: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
         }
     
     }

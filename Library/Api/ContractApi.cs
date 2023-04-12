@@ -18,6 +18,21 @@ namespace IO.Swagger.Api
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
         ContractResult ApiV1GetContractGet (string chainAddressOrName, string contractName);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="contractName"></param>
+        /// <returns>ContractResult</returns>
+        ContractResult ApiV1GetContractByAddressGet (string chainAddressOrName, string contractAddress);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <returns>ContractResult</returns>
+        IList<ContractResult> ApiV1GetContractsGet (string chainAddressOrName);
     }
   
     /// <summary>
@@ -92,7 +107,7 @@ namespace IO.Swagger.Api
             String postBody = null;
     
              if (chainAddressOrName != null) queryParams.Add("chainAddressOrName", ApiClient.ParameterToString(chainAddressOrName)); // query parameter
- if (contractName != null) queryParams.Add("contractName", ApiClient.ParameterToString(contractName)); // query parameter
+             if (contractName != null) queryParams.Add("contractName", ApiClient.ParameterToString(contractName)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] {  };
@@ -106,6 +121,75 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (ContractResult) ApiClient.Deserialize(response.Content, typeof(ContractResult), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="contractName"></param>
+        /// <returns>ContractResult</returns>
+        public ContractResult ApiV1GetContractByAddressGet (string chainAddressOrName, string contractAddress)
+        {
+    
+            var path = "/api/v1/GetContractByAddress";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (chainAddressOrName != null) queryParams.Add("chainAddressOrName", ApiClient.ParameterToString(chainAddressOrName)); // query parameter
+            if (contractAddress != null) queryParams.Add("contractAddress", ApiClient.ParameterToString(contractAddress)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ContractResult) ApiClient.Deserialize(response.Content, typeof(ContractResult), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="contractName"></param>
+        /// <returns>ContractResult</returns>
+        public IList<ContractResult> ApiV1GetContractsGet (string chainAddressOrName)
+        {
+    
+            var path = "/api/v1/GetContracts";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (chainAddressOrName != null) queryParams.Add("chainAddressOrName", ApiClient.ParameterToString(chainAddressOrName)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractsGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (IList<ContractResult>) ApiClient.Deserialize(response.Content, typeof(IList<ContractResult>), response.Headers);
         }
     
     }

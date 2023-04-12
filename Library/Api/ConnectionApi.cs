@@ -6,49 +6,65 @@ using IO.Swagger.Model;
 
 namespace IO.Swagger.Api
 {
-    /// <summary>
+    /*/// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAccountApi
+    public interface IConnectionApi
     {
         /// <summary>
         ///  
         /// </summary>
         /// <param name="account"></param>
         /// <returns>AccountResult</returns>
-        AccountResult ApiV1GetAccountGet (string account);
+        AccountResult ApiV1GetAbciQuery(string path, string data, int height, bool prove = false);
+        
         /// <summary>
         ///  
         /// </summary>
-        /// <param name="accountText"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        List<AccountResult> ApiV1GetAccountsGet (string accountText);
+        List<AccountResult> ApiV1GetHealth ();
         
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        List<AccountResult> ApiV1GetAddressesBySymbol (string symbol);
+        List<AccountResult> ApiV1GetStatus();
+        
         /// <summary>
         ///  
         /// </summary>
         /// <param name="name"></param>
         /// <returns>string</returns>
-        string ApiV1LookUpNameGet (string name);
+        List<AccountResult> ApiV1GetNetInfo();
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>string</returns>
+        List<AccountResult> ApiV1GetRequestBlock(int height);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>string</returns>
+        List<AccountResult> ApiV1GetValidatorsSettings();
+
     }
   
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class AccountApi : IAccountApi
+    public class ConnectionApi : IConnectionApi
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountApi"/> class.
         /// </summary>
         /// <param name="apiClient"> an instance of ApiClient (optional)</param>
         /// <returns></returns>
-        public AccountApi(ApiClient apiClient = null)
+        public ConnectionApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
                 this.ApiClient = Configuration.DefaultApiClient; 
@@ -60,7 +76,7 @@ namespace IO.Swagger.Api
         /// Initializes a new instance of the <see cref="AccountApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AccountApi(String basePath)
+        public ConnectionApi(String basePath)
         {
             this.ApiClient = new ApiClient(basePath);
         }
@@ -223,5 +239,5 @@ namespace IO.Swagger.Api
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
-    }
+    }*/
 }

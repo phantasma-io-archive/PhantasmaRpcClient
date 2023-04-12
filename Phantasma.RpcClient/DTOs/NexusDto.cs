@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Phantasma.RpcClient.DTOs
 {
-    public class ChainDto
+    public class NexusDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -11,19 +11,13 @@ namespace Phantasma.RpcClient.DTOs
         [JsonProperty("address")]
         public string Address { get; set; }
 
-        [JsonProperty("parent")]
+        [JsonProperty("parentAddress")]
         public string ParentAddress { get; set; }
 
         [JsonProperty("height")]
         public uint Height { get; set; }
-        
-        [JsonProperty("organization")]
-        public string Organization { get; set; }
 
         [JsonProperty("contracts")]
         public IList<string> Contracts { get; set; }
-        
-        [JsonProperty("dapps")]
-        public IList<string> Dapps { get; set; }
     }
 }

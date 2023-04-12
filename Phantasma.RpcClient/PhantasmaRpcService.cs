@@ -29,6 +29,7 @@ namespace Phantasma.RpcClient
             GetChains = new PhantasmaGetChains(client);
             GetPeers = new PhantasmaGetPeers(client);
             GetPlatforms = new PhantasmaGetPlatforms(client);
+            GetPlatform = new PhantasmaGetPlatform(client);
             GetTokens = new PhantasmaGetTokens(client);
             GetTokenData = new PhantasmaGetTokenData(client);
             GetTokenTransfers = new PhantasmaGetTokenTransfers(client);
@@ -59,6 +60,7 @@ namespace Phantasma.RpcClient
         public PhantasmaGetChains GetChains { get; }
         public PhantasmaGetPeers GetPeers { get; }
         public PhantasmaGetPlatforms GetPlatforms { get; }
+        public PhantasmaGetPlatform GetPlatform { get; }
         public PhantasmaGetTokens GetTokens { get; }
         public PhantasmaGetTokenData GetTokenData { get; }
         public PhantasmaGetTokenTransfers GetTokenTransfers { get; }

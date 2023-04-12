@@ -14,5 +14,10 @@ namespace Phantasma.RpcClient.Infrastructure
         {
             return base.SendRequestAsync(id);
         }
+        
+        public new TResponse SendRequest(object id = null)
+        {
+            return base.SendRequest(id);
+        }
     }
 }

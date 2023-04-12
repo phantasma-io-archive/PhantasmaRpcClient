@@ -14,6 +14,12 @@ namespace Phantasma.RpcClient.Api
             if (address == null) throw new ArgumentNullException(nameof(address));
             return SendRequestAsync(id, address);
         }
+        
+        public AccountDto SendRequest(string address, object id = null)
+        {
+            if (address == null) throw new ArgumentNullException(nameof(address));
+            return SendRequest(id, address);
+        }
 
         public RpcRequest BuildRequest(string address, object id = null)
         {

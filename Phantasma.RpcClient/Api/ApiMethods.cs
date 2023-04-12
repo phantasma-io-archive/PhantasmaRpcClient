@@ -2,31 +2,102 @@
 {
     public enum ApiMethods
     {
-        getABI,
+        // Acount
         getAccount,
-        getApps,
-        getAddressTransactions,
-        getAddressTxCount,
-        getAuctions,
+        getAccounts,
+        lookUpName,
+        getAddressesBySymbol,
+        
+        // Auction
         getAuctionsCount,
+        getAuctions,
+        getAuction,
+        
+        // Block
+        getBlockHeight,
+        getBlockTransactionCountByHash,
         getBlockByHash,
         getRawBlockByHash,
         getBlockByHeight,
         getRawBlockByHeight,
-        getBlockHeight,
-        getBlockTransactionCountByHash,
+        getLatestBlock,
+        getRawLatestBlock,
+        
+        // Chain
         getChains,
-        getPeers,
+        
+        // Connection
+        abci_query,
+        health,
+        status,
+        net_info,
+        request_block,
+        getValidatorsSettings,
+        
+        // Contract
+        getContracts,
+        getContract,
+        getContractByAddress,
+        
+        // Leaderboard
+        getLeaderboard,
+        
+        // Nexus
+        getNexus,
+        
+        // Organization
+        getOrganization,
+        getOrganizations,
+        getOrganizationByName,
+        
+        // Platforms
         getPlatforms,
-        getTransaction,
-        getTransactionByBlockHashAndIndex,
+        getPlatform,
+        getInterop,
+        
+        // RPC
+        rpc,
+        
+        // Sale
+        getLatestSaleHash,
+        getSale,
+        
+        // Token
         getTokens,
+        getToken,
         getTokenData,
+        getNFT,
+        getNFTs,
+        getTokenBalance,
+        
+        // Transaction
+        getTransactionByBlockHashAndIndex,
+        getAddressTransactions,
+        getAddressTransactionCount,
+        sendRawTransaction,
+        invokeRawScript,
+        getTransaction,
+        
+        // Validator
+        getValidators,
+        getABI,
+        
+        // Storage
+        getArchive,
+        writeArchive,
+        readArchive,
+        
+        // Swaps
+        getSwapsForAddress,
+        settleSwap,
+
+
+        // Missing
+        getApps,
+        getAddressTxCount,
+        getPeers,
         getTokenTransfers,
         getTokenTransferCount,
-        getSwapsForAddress,
-        sendRawTransaction,
-        lookUpName,
-        invokeRawScript,
+
     }
 }

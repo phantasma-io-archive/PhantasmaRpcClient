@@ -13,6 +13,12 @@ namespace Phantasma.RpcClient.Api
             if (signedTx == null) throw new ArgumentNullException(nameof(signedTx));
             return SendRequestAsync(id, signedTx);
         }
+        
+        public string SendRequest(string signedTx, object id = null)
+        {
+            if (signedTx == null) throw new ArgumentNullException(nameof(signedTx));
+            return SendRequest(id, signedTx);
+        }
 
         public RpcRequest BuildRequest(string signedTx, object id = null)
         {

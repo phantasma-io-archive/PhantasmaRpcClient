@@ -16,6 +16,14 @@ namespace Phantasma.RpcClient.Api
 
             return SendRequestAsync(id, tokenSymbol, tokenId);
         }
+        
+        public TokenData SendRequest(string tokenSymbol, string tokenId, object id = null)
+        {
+            if (tokenSymbol == null) throw new ArgumentNullException(nameof(tokenSymbol));
+            if (tokenId == null) throw new ArgumentNullException(nameof(tokenId));
+
+            return SendRequest(id, tokenSymbol, tokenId);
+        }
 
         public RpcRequest BuildRequest(string tokenSymbol, string tokenId, object id = null)
         {

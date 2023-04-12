@@ -9,4 +9,13 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Api\Connection" />
+    <Folder Include="Api\Contract" />
+    <Folder Include="Api\Leaderboard" />
+    <Folder Include="Api\Sale" />
+    <Folder Include="Api\Storage" />
+    <Folder Include="Api\Validator" />
+  </ItemGroup>
+
 </Project>

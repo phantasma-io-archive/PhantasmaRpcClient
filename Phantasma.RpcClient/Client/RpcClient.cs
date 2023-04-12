@@ -24,12 +24,13 @@ namespace Phantasma.RpcClient.Client
         private readonly JsonSerializerSettings _jsonSerializerSettings;
         private readonly object _lockObject = new object();
         private volatile bool _firstHttpClient;
-        private HttpClient _httpClient;
+        public HttpClient _httpClient;
         private HttpClient _httpClient2;
         private DateTime _httpClientLastCreatedAt;
 
         public RpcClient(Uri baseUrl, AuthenticationHeaderValue authHeaderValue = null,
-            JsonSerializerSettings jsonSerializerSettings = null, HttpClientHandler httpClientHandler = null, ILogger log = null)
+            JsonSerializerSettings jsonSerializerSettings = null, HttpClientHandler httpClientHandler = null,
+            ILogger log = null)
         {
             _baseUrl = baseUrl;
             _authHeaderValue = authHeaderValue;
@@ -41,6 +42,80 @@ namespace Phantasma.RpcClient.Client
             CreateNewHttpClient();
         }
 
+        #region Without Async Methods
+        public override void SendRequest(RpcRequest request, string route = null)
+        {
+            var response = Send(new RpcRequestMessage(request.Id, request.Method, request.RawParameters), route);
+            HandleRpcError(response);
+        }
+
+        public override void SendRequest(string method, string route = null, params object[] paramList)
+        {
+            var request = new RpcRequestMessage(Guid.NewGuid().ToString(), method, paramList);
+            var response = Send(new RpcRequestMessage(request.Id, request.Method, request.RawParameters), route);
+            HandleRpcError(response);
+        }
+
+        protected override T SendInnerRequest<T>(RpcRequest request, string route = null)
+        {
+            var response = Send(new RpcRequestMessage(request.Id, request.Method, request.RawParameters), route);
+            HandleRpcError(response);
+            return response.GetResult<T>();
+        }
+
+        protected override T SendInnerRequest<T>(string method, string route = null, params object[] paramList)
+        {
+            var request = new RpcRequestMessage(Guid.NewGuid().ToString(), method, paramList);
+            var response = Send(new RpcRequestMessage(request.Id, request.Method, request.RawParameters), route);
+            HandleRpcError(response);
+            return response.GetResult<T>();
+        }
+
+        private RpcResponseMessage Send(RpcRequestMessage request, string route = null)
+        {
+            var logger = new RpcLogger(_log);
+            try
+            {
+                var httpClient = GetOrCreateHttpClient();
+                var rpcRequestJson = JsonConvert.SerializeObject(request, _jsonSerializerSettings);
+                var httpContent = new StringContent(rpcRequestJson, Encoding.UTF8, "application/json");
+                var cancellationTokenSource = new CancellationTokenSource();
+                cancellationTokenSource.CancelAfter(ConnectionTimeout);
+
+                logger.LogRequest(rpcRequestJson);
+
+                var httpResponseMessage = httpClient.PostAsync(route, httpContent, cancellationTokenSource.Token)
+                    .GetAwaiter().GetResult();
+                httpResponseMessage.EnsureSuccessStatusCode();
+
+                var stream = httpResponseMessage.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
+                using (var streamReader = new StreamReader(stream))
+                using (var reader = new JsonTextReader(streamReader))
+                {
+                    var serializer = JsonSerializer.Create(_jsonSerializerSettings);
+                    var message = serializer.Deserialize<RpcResponseMessage>(reader);
+
+                    logger.LogResponse(message);
+
+                    return message;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogException(ex);
+                throw new RpcClientUnknownException("Error occurred when trying to send rpc requests(s)", ex);
+            }
+        }
+        #endregion
+
+        private static void HandleRpcError(RpcResponseMessage response)
+        {
+            if (response.HasError)
+                throw new RpcResponseException(new RpcError(response.Error.Code, response.Error.Message,
+                    response.Error.Data));
+        }
+        
+        #region Async Methods
         protected override async Task<T> SendInnerRequestAync<T>(RpcRequest request, string route = null)
         {
             var response =
@@ -58,13 +133,6 @@ namespace Phantasma.RpcClient.Client
             var response = await SendAsync(request, route).ConfigureAwait(false);
             HandleRpcError(response);
             return response.GetResult<T>();
-        }
-
-        private static void HandleRpcError(RpcResponseMessage response)
-        {
-            if (response.HasError)
-                throw new RpcResponseException(new RpcError(response.Error.Code, response.Error.Message,
-                    response.Error.Data));
         }
 
         public override async Task SendRequestAsync(RpcRequest request, string route = null)
@@ -96,7 +164,8 @@ namespace Phantasma.RpcClient.Client
 
                 logger.LogRequest(rpcRequestJson);
 
-                var httpResponseMessage = await httpClient.PostAsync(route, httpContent, cancellationTokenSource.Token).ConfigureAwait(false);
+                var httpResponseMessage = await httpClient.PostAsync(route, httpContent, cancellationTokenSource.Token)
+                    .ConfigureAwait(false);
                 httpResponseMessage.EnsureSuccessStatusCode();
 
                 var stream = await httpResponseMessage.Content.ReadAsStreamAsync();
@@ -121,6 +190,7 @@ namespace Phantasma.RpcClient.Client
                 throw new RpcClientUnknownException("Error occurred when trying to send rpc requests(s)", ex);
             }
         }
+        #endregion
 
         private HttpClient GetOrCreateHttpClient()
         {
@@ -143,7 +213,8 @@ namespace Phantasma.RpcClient.Client
 
         private void CreateNewHttpClient()
         {
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            ServicePointManager.ServerCertificateValidationCallback +=
+                (sender, certificate, chain, sslPolicyErrors) => true;
             var httpClient = _httpClientHandler != null ? new HttpClient(_httpClientHandler) : new HttpClient();
 
             httpClient.DefaultRequestHeaders.Authorization = _authHeaderValue;

@@ -17,6 +17,13 @@ namespace Phantasma.RpcClient.Api
             return SendRequestAsync(id, chain, symbol, page, pageSize);
         }
 
+        public PaginatedAuctionsDto SendRequest(string chain, string symbol, int page, int pageSize, object id = null)
+        {
+            if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));
+            if (pageSize <= 0) throw new ArgumentOutOfRangeException(nameof(pageSize));
+
+            return SendRequest(id, chain, symbol, page, pageSize);
+        }
         public RpcRequest BuildRequest(string chain, string symbol, int page, int pageSize, object id = null)
         {
             if (page <= 0) throw new ArgumentOutOfRangeException(nameof(page));

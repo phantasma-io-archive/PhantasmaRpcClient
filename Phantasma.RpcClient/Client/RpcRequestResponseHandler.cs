@@ -19,6 +19,12 @@ namespace Phantasma.RpcClient.Client
             var request = BuildRequest(id, paramList);
             return Client.SendRequestAsync<TResponse>(request);
         }
+        
+        protected TResponse SendRequest(object id, params object[] paramList)
+        {
+            var request = BuildRequest(id, paramList);
+            return Client.SendRequest<TResponse>(request);
+        }
 
         public RpcRequest BuildRequest(object id, params object[] paramList)
         {

@@ -1,0 +1,51 @@
+name: .NET Nuget Publish
+
+on:   
+  workflow_dispatch:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  pull-requests: write
+  actions: write
+  issues: write
+  contents: write
+
+env:
+  GITHUB_TOKEN: ${{ ecrets.GITHUB_TOKEN }}
+
+jobs:
+  build:
+    name: Build and Publish Nuget
+    runs-on: ubuntu-latest
+    permissions: write-all
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev libzstd-dev
+          sudo apt-get install libc6-dev libicu-dev libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev libzstd-dev librocksdb-dev
+          sudo apt-get install librocksdb-dev
+          dotnet tool install --global dotnet-reportgenerator-globaltool
+          dotnet restore
+          
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Pack Nuget
+        run: dotnet pack --configuration Release  --no-restore
+        
+      - name: Publish Nuget
+        run: |
+          dotnet nuget push ./Phantasma.RPC.Sharp/bin/Release/Phantasma.RPC.Sharp.*.nupkg --skip-duplicate -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

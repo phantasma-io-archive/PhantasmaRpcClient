@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Phantasma.RPC.Sharp.Client;
 using Phantasma.RPC.Sharp.Model;
 using RestSharp;
@@ -112,7 +113,7 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+            RestResponseBase response = (RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountGet: " + response.Content, response.Content);
@@ -145,7 +146,7 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.Content, response.Content);
@@ -178,7 +179,7 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.Content, response.Content);
@@ -211,7 +212,7 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1LookUpNameGet: " + response.Content, response.Content);

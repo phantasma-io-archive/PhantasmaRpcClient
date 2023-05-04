@@ -1,11 +1,6 @@
-using System;
 using System.Reflection;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
-namespace IO.Swagger.Client
+namespace Phantasma.RPC.Sharp.Client
 {
     /// <summary>
     /// Represents a set of configuration settings

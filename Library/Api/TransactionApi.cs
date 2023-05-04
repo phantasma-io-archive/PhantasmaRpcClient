@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
+using Phantasma.RPC.Sharp.Client;
+using Phantasma.RPC.Sharp.Model;
 using RestSharp;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace IO.Swagger.Api
+namespace Phantasma.RPC.Sharp.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -18,6 +16,7 @@ namespace IO.Swagger.Api
         /// <param name="chainInput"></param>
         /// <returns>int?</returns>
         int? ApiV1GetAddressTransactionCountGet (string account, string chainInput);
+        
         /// <summary>
         ///  
         /// </summary>
@@ -26,6 +25,7 @@ namespace IO.Swagger.Api
         /// <param name="pageSize"></param>
         /// <returns>PaginatedResult</returns>
         PaginatedResult ApiV1GetAddressTransactionsGet (string account, int? page, int? pageSize);
+        
         /// <summary>
         ///  
         /// </summary>
@@ -34,6 +34,28 @@ namespace IO.Swagger.Api
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
         TransactionResult ApiV1GetTransactionByBlockHashAndIndexGet (string chainAddressOrName, string blockHash, int? index);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="txData"></param>
+        /// <returns>TransactionResult</returns>
+        string ApiV1SendRawTransaction (string txData);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainInput"></param>
+        /// <param name="scriptData"></param>
+        /// <returns>TransactionResult</returns>
+        string ApiV1InvokeRawScript (string chainInput, string scriptData);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="hashText"></param>
+        /// <returns>TransactionResult</returns>
+        TransactionResult ApiV1GetTransaction (string hashText);
     }
   
     /// <summary>
@@ -197,6 +219,110 @@ namespace IO.Swagger.Api
     
             return (TransactionResult) ApiClient.Deserialize(response.Content, typeof(TransactionResult), response.Headers);
         }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="index"></param>
+        /// <returns>TransactionResult</returns>
+        public TransactionResult ApiV1GetTransaction (string txHash)
+        {
     
+            var path = "/api/v1/GetTransaction";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+             if (txHash != null) queryParams.Add("txHash", ApiClient.ParameterToString(txHash)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTransaction: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTransaction: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (TransactionResult) ApiClient.Deserialize(response.Content, typeof(TransactionResult), response.Headers);
+        }
+    
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="index"></param>
+        /// <returns>TransactionResult</returns>
+        public string ApiV1SendRawTransaction (string txData)
+        {
+            var path = "/api/v1/SendRawTransaction";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (txData != null) queryParams.Add("txData", ApiClient.ParameterToString(txData)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1SendRawTransaction: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1SendRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainAddressOrName"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="index"></param>
+        /// <returns>TransactionResult</returns>
+        public string ApiV1InvokeRawScript (string chainInput, string scriptData)
+        {
+            var path = "/api/v1/InvokeRawTransaction";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
+            if (scriptData != null) queryParams.Add("scriptData", ApiClient.ParameterToString(scriptData)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1InvokeRawTransaction: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1InvokeRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
     }
 }

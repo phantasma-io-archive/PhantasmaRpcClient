@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
+using Phantasma.RPC.Sharp.Client;
+using Phantasma.RPC.Sharp.Model;
 using RestSharp;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace IO.Swagger.Api
+namespace Phantasma.RPC.Sharp.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -16,7 +14,20 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        OrganizationResult ApiV1GetOrganizationGet (string ID);
+        OrganizationResult ApiV1GetOrganization (string ID);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <returns>OrganizationResult</returns>
+        IList<OrganizationResult> ApiV1GetOrganizations ();
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>OrganizationResult</returns>
+        OrganizationResult ApiV1GetOrganizationByName (string name);
     }
   
     /// <summary>
@@ -77,7 +88,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        public OrganizationResult ApiV1GetOrganizationGet (string ID)
+        public OrganizationResult ApiV1GetOrganization (string ID)
         {
     
             var path = "/api/v1/GetOrganization";
@@ -103,6 +114,71 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (OrganizationResult) ApiClient.Deserialize(response.Content, typeof(OrganizationResult), response.Headers);
+        }
+        
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>OrganizationResult</returns>
+        public OrganizationResult ApiV1GetOrganizationByName (string name)
+        {
+    
+            var path = "/api/v1/GetOrganizationByName";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (name != null) queryParams.Add("name", ApiClient.ParameterToString(name)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationByName: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationByName: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (OrganizationResult) ApiClient.Deserialize(response.Content, typeof(OrganizationResult), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>OrganizationResult</returns>
+        public IList<OrganizationResult> ApiV1GetOrganizations ()
+        {
+    
+            var path = "/api/v1/GetOrganizations";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizations: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizations: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (IList<OrganizationResult>) ApiClient.Deserialize(response.Content, typeof(IList<OrganizationResult>), response.Headers);
         }
     
     }

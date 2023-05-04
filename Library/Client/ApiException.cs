@@ -1,6 +1,4 @@
-using System;
-
-namespace IO.Swagger.Client {
+namespace Phantasma.RPC.Sharp.Client {
   /// <summary>
   /// API Exception
   /// </summary>

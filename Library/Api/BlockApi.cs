@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
+using Phantasma.RPC.Sharp.Client;
+using Phantasma.RPC.Sharp.Model;
 using RestSharp;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
 
-namespace IO.Swagger.Api
+namespace Phantasma.RPC.Sharp.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -50,6 +48,19 @@ namespace IO.Swagger.Api
         /// <param name="height"></param>
         /// <returns>string</returns>
         string ApiV1GetRawBlockByHeightGet (string chainInput, int? height);
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainInput"></param>
+        /// <returns>BlockResult</returns>
+        BlockResult ApiV1GetLatestBlock (string chainInput);
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainInput"></param>
+        /// <returns>string</returns>
+        string ApiV1GetRawLatestBlock (string chainInput);
     }
   
     /// <summary>
@@ -158,6 +169,40 @@ namespace IO.Swagger.Api
     
              if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
  if (height != null) queryParams.Add("height", ApiClient.ParameterToString(height)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (BlockResult) ApiClient.Deserialize(response.Content, typeof(BlockResult), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainInput"></param>
+        /// <param name="height"></param>
+        /// <returns>BlockResult</returns>
+        public BlockResult ApiV1GetLatestBlock (string chainInput)
+        {
+    
+            var path = "/api/v1/GetBlockByHeight";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] {  };
@@ -294,6 +339,40 @@ namespace IO.Swagger.Api
     
              if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
  if (height != null) queryParams.Add("height", ApiClient.ParameterToString(height)); // query parameter
+                                        
+            // authentication setting, if any
+            String[] authSettings = new String[] {  };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+        
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="chainInput"></param>
+        /// <param name="height"></param>
+        /// <returns>string</returns>
+        public string ApiV1GetRawLatestBlock (string chainInput)
+        {
+    
+            var path = "/api/v1/GetRawBlockByHeight";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+            if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] {  };

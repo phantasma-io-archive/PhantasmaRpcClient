@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using RestSharp;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace IO.Swagger.Api
+namespace Phantasma.RPC.Sharp.Api
 {
     /*/// <summary>
     /// Represents a collection of functions to interact with the API endpoints

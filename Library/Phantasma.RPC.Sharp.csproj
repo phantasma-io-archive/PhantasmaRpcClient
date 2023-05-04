@@ -4,6 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Phantasma.Rpc</Title>
+    <Description>Phantasma RPC - C# client to interact via RCP with an Phantasma node.</Description>
+    <PackageProjectUrl>www.phantasma.io</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/phantasma-io/PhantasmaRpcClient</RepositoryUrl>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

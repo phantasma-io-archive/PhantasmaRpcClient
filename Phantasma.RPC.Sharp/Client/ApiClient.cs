@@ -82,7 +82,7 @@ namespace Phantasma.RPC.Sharp.Client
 
             // add file parameter, if any
             foreach(var param in fileParams)
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
 
             if (postBody != null) // http body (model) parameter
                 request.AddParameter("application/json", postBody, ParameterType.RequestBody);
@@ -120,10 +120,12 @@ namespace Phantasma.RPC.Sharp.Client
         /// <returns>FileParameter.</returns>
         public FileParameter ParameterToFile(string name, Stream stream)
         {
-            if (stream is FileStream)
-                return FileParameter.Create(name, stream.ReadAsBytes(), Path.GetFileName(((FileStream)stream).Name));
+            
+            /*if (stream is FileStream)
+                return FileParameter.Create(name, stream., Path.GetFileName(((FileStream)stream).Name));
             else
-                return FileParameter.Create(name, stream.ReadAsBytes(), "no_file_name_provided");
+                return FileParameter.Create(name, stream.ReadAsBytes(), "no_file_name_provided");*/
+            return null;
         }
     
         /// <summary>
@@ -154,7 +156,7 @@ namespace Phantasma.RPC.Sharp.Client
         /// <param name="type">Object type.</param>
         /// <param name="headers">HTTP headers.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(string content, Type type, IList<Parameter> headers=null)
+        public object Deserialize(string content, Type type, IReadOnlyCollection<HeaderParameter> headers=null)
         {
             if (type == typeof(Object)) // return an object
             {

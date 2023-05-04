@@ -10,7 +10,7 @@
     <PackageProjectUrl>www.phantasma.io</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/phantasma-io/PhantasmaRpcClient</RepositoryUrl>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +22,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="RestSharp.Net20" Version="105.2.3.3" />
+    <PackageReference Include="RestSharp" Version="105.2.3" />
+    <!--<PackageReference Include="RestSharp.Net20" Version="105.2.3.3" />-->
   </ItemGroup>
 
 </Project>

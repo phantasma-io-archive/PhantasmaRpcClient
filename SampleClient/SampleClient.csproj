@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\Phantasma.RPC.Sharp.csproj" />
+    <ProjectReference Include="..\Phantasma.RPC.Sharp\Phantasma.RPC.Sharp.csproj" />
   </ItemGroup>
 
 </Project>

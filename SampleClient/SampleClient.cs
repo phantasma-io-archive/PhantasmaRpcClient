@@ -1,6 +1,6 @@
-﻿using IO.Swagger.Api;
-using IO.Swagger.Client;
-using System.Numerics;
+﻿using System.Numerics;
+using Phantasma.RPC.Sharp.Api;
+using Phantasma.RPC.Sharp.Client;
 
 namespace SampleClient
 {

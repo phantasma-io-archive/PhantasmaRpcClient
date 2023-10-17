@@ -13,13 +13,13 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        List<PlatformResult> GetPlatforms ();
-        
-        PlatformResult GetPlatform (string platform);
-        
-        PlatformResult GetInterop (string platform);
+        List<PlatformResult> GetPlatforms();
+
+        PlatformResult GetPlatform(string platform);
+
+        PlatformResult GetInterop(string platform);
     }
-  
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
@@ -33,11 +33,11 @@ namespace Phantasma.RPC.Sharp.Api
         public PlatformApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
-                this.ApiClient = Configuration.DefaultApiClient; 
+                this.ApiClient = Configuration.DefaultApiClient;
             else
                 this.ApiClient = apiClient;
         }
-    
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PlatformApi"/> class.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient = new ApiClient(basePath);
         }
-    
+
         /// <summary>
         /// Sets the base path of the API client.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient.BasePath = basePath;
         }
-    
+
         /// <summary>
         /// Gets the base path of the API client.
         /// </summary>
@@ -66,104 +66,113 @@ namespace Phantasma.RPC.Sharp.Api
         {
             return this.ApiClient.BasePath;
         }
-    
+
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
         /// <value>An instance of the ApiClient</value>
-        public ApiClient ApiClient {get; set;}
-    
+        public ApiClient ApiClient { get; set; }
+
         /// <summary>
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public List<PlatformResult> GetPlatforms ()
+        public List<PlatformResult> GetPlatforms()
         {
             var path = "/api/v1/GetPlatforms";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-                                                    
+
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (List<PlatformResult>) ApiClient.Deserialize(response.Content, typeof(List<PlatformResult>), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (List<PlatformResult>)ApiClient.Deserialize(response.Content, typeof(List<PlatformResult>),
+                response.Headers);
         }
-        
+
         /// <summary>
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public PlatformResult GetPlatform (string platform)
+        public PlatformResult GetPlatform(string platform)
         {
             var path = "/api/v1/GetPlatform";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
+
             if (platform != null) queryParams.Add("platform", ApiClient.ParameterToString(platform)); // query parameter
 
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (PlatformResult)ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
         }
-        
+
         /// <summary>
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public PlatformResult GetInterop (string platform)
+        public PlatformResult GetInterop(string platform)
         {
             var path = "/api/v1/GetInterop";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
+
             if (platform != null) queryParams.Add("platform", ApiClient.ParameterToString(platform)); // query parameter
 
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetInterop: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetInterop: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetInterop: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
+                throw new ApiException((int)response.StatusCode, "Error calling GetInterop: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (PlatformResult)ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
         }
-    
     }
 }

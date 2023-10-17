@@ -16,7 +16,8 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDtext"></param>
         /// <param name="extended"></param>
         /// <returns>TokenDataResult</returns>
-        TokenDataResult GetNFT (string symbol, string iDtext, bool? extended);
+        TokenDataResult GetNFT(string symbol, string iDtext, bool? extended);
+
         /// <summary>
         ///  
         /// </summary>
@@ -24,7 +25,8 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDText"></param>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenDataResult&gt;</returns>
-        List<TokenDataResult> GetNFTs (string symbol, string iDText, bool? extended);
+        List<TokenDataResult> GetNFTs(string symbol, string iDText, bool? extended);
+
         /// <summary>
         ///  
         /// </summary>
@@ -32,29 +34,32 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="tokenSymbol"></param>
         /// <param name="chainInput"></param>
         /// <returns>BalanceResult</returns>
-        BalanceResult GetTokenBalance (string account, string tokenSymbol, string chainInput);
+        BalanceResult GetTokenBalance(string account, string tokenSymbol, string chainInput);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>TokenDataResult</returns>
-        TokenDataResult GetTokenData (string symbol, string iDtext);
+        TokenDataResult GetTokenData(string symbol, string iDtext);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="extended"></param>
         /// <returns>TokenResult</returns>
-        TokenResult GetToken (string symbol, bool? extended);
+        TokenResult GetToken(string symbol, bool? extended);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenResult&gt;</returns>
-        List<TokenResult> GetTokens (bool? extended);
+        List<TokenResult> GetTokens(bool? extended);
     }
-  
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
@@ -68,11 +73,11 @@ namespace Phantasma.RPC.Sharp.Api
         public TokenApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
-                this.ApiClient = Configuration.DefaultApiClient; 
+                this.ApiClient = Configuration.DefaultApiClient;
             else
                 this.ApiClient = apiClient;
         }
-    
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenApi"/> class.
         /// </summary>
@@ -81,7 +86,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient = new ApiClient(basePath);
         }
-    
+
         /// <summary>
         /// Sets the base path of the API client.
         /// </summary>
@@ -91,7 +96,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient.BasePath = basePath;
         }
-    
+
         /// <summary>
         /// Gets the base path of the API client.
         /// </summary>
@@ -101,13 +106,13 @@ namespace Phantasma.RPC.Sharp.Api
         {
             return this.ApiClient.BasePath;
         }
-    
+
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
         /// <value>An instance of the ApiClient</value>
-        public ApiClient ApiClient {get; set;}
-    
+        public ApiClient ApiClient { get; set; }
+
         /// <summary>
         ///  
         /// </summary>
@@ -115,36 +120,38 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDtext"></param>
         /// <param name="extended"></param>
         /// <returns>TokenDataResult</returns>
-        public TokenDataResult GetNFT (string symbol, string iDtext, bool? extended)
+        public TokenDataResult GetNFT(string symbol, string iDtext, bool? extended)
         {
-    
             var path = "/api/v1/GetNFT";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
- if (iDtext != null) queryParams.Add("IDtext", ApiClient.ParameterToString(iDtext)); // query parameter
- if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
-                                        
+
+            if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
+            if (iDtext != null) queryParams.Add("IDtext", ApiClient.ParameterToString(iDtext)); // query parameter
+            if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetNFTGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (TokenDataResult) ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
+                throw new ApiException((int)response.StatusCode, "Error calling GetNFTGet: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (TokenDataResult)ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
@@ -152,36 +159,39 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDText"></param>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenDataResult&gt;</returns>
-        public List<TokenDataResult> GetNFTs (string symbol, string iDText, bool? extended)
+        public List<TokenDataResult> GetNFTs(string symbol, string iDText, bool? extended)
         {
-    
             var path = "/api/v1/GetNFTs";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
- if (iDText != null) queryParams.Add("IDText", ApiClient.ParameterToString(iDText)); // query parameter
- if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
-                                        
+
+            if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
+            if (iDText != null) queryParams.Add("IDText", ApiClient.ParameterToString(iDText)); // query parameter
+            if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTsGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetNFTsGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTsGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (List<TokenDataResult>) ApiClient.Deserialize(response.Content, typeof(List<TokenDataResult>), response.Headers);
+                throw new ApiException((int)response.StatusCode, "Error calling GetNFTsGet: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (List<TokenDataResult>)ApiClient.Deserialize(response.Content, typeof(List<TokenDataResult>),
+                response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
@@ -189,138 +199,148 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="tokenSymbol"></param>
         /// <param name="chainInput"></param>
         /// <returns>BalanceResult</returns>
-        public BalanceResult GetTokenBalance (string account, string tokenSymbol, string chainInput)
+        public BalanceResult GetTokenBalance(string account, string tokenSymbol, string chainInput)
         {
-    
             var path = "/api/v1/GetTokenBalance";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
- if (tokenSymbol != null) queryParams.Add("tokenSymbol", ApiClient.ParameterToString(tokenSymbol)); // query parameter
- if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
-                                        
+
+            if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
+            if (tokenSymbol != null)
+                queryParams.Add("tokenSymbol", ApiClient.ParameterToString(tokenSymbol)); // query parameter
+            if (chainInput != null)
+                queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenBalanceGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTokenBalanceGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenBalanceGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (BalanceResult) ApiClient.Deserialize(response.Content, typeof(BalanceResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTokenBalanceGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (BalanceResult)ApiClient.Deserialize(response.Content, typeof(BalanceResult), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>TokenDataResult</returns>
-        public TokenDataResult GetTokenData (string symbol, string iDtext)
+        public TokenDataResult GetTokenData(string symbol, string iDtext)
         {
-    
             var path = "/api/v1/GetTokenData";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
- if (iDtext != null) queryParams.Add("IDtext", ApiClient.ParameterToString(iDtext)); // query parameter
-                                        
+
+            if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
+            if (iDtext != null) queryParams.Add("IDtext", ApiClient.ParameterToString(iDtext)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenDataGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTokenDataGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenDataGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (TokenDataResult) ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTokenDataGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (TokenDataResult)ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="extended"></param>
         /// <returns>TokenResult</returns>
-        public TokenResult GetToken (string symbol, bool? extended)
+        public TokenResult GetToken(string symbol, bool? extended)
         {
-    
             var path = "/api/v1/GetToken";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
- if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
-                                        
+
+            if (symbol != null) queryParams.Add("symbol", ApiClient.ParameterToString(symbol)); // query parameter
+            if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTokenGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (TokenResult) ApiClient.Deserialize(response.Content, typeof(TokenResult), response.Headers);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTokenGet: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (TokenResult)ApiClient.Deserialize(response.Content, typeof(TokenResult), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenResult&gt;</returns>
-        public List<TokenResult> GetTokens (bool? extended)
+        public List<TokenResult> GetTokens(bool? extended)
         {
-    
             var path = "/api/v1/GetTokens";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
-                                        
+
+            if (extended != null) queryParams.Add("extended", ApiClient.ParameterToString(extended)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokensGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTokensGet: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTokensGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (List<TokenResult>) ApiClient.Deserialize(response.Content, typeof(List<TokenResult>), response.Headers);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTokensGet: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (List<TokenResult>)ApiClient.Deserialize(response.Content, typeof(List<TokenResult>),
+                response.Headers);
         }
-    
     }
 }

@@ -15,7 +15,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
-        ContractResult ApiV1GetContractGet (string chainAddressOrName, string contractName);
+        ContractResult GetContract (string chainAddressOrName, string contractName);
         
         /// <summary>
         ///  
@@ -23,14 +23,14 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
-        ContractResult ApiV1GetContractByAddressGet (string chainAddressOrName, string contractAddress);
+        ContractResult GetContractByAddress (string chainAddressOrName, string contractAddress);
         
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainAddressOrName"></param>
         /// <returns>ContractResult</returns>
-        IList<ContractResult> ApiV1GetContractsGet (string chainAddressOrName);
+        IList<ContractResult> GetContracts (string chainAddressOrName);
     }
   
     /// <summary>
@@ -92,7 +92,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
-        public ContractResult ApiV1GetContractGet (string chainAddressOrName, string contractName)
+        public ContractResult GetContract (string chainAddressOrName, string contractName)
         {
     
             var path = "/api/v1/GetContract";
@@ -111,12 +111,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (ContractResult) ApiClient.Deserialize(response.Content, typeof(ContractResult), response.Headers);
         }
@@ -127,7 +127,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
-        public ContractResult ApiV1GetContractByAddressGet (string chainAddressOrName, string contractAddress)
+        public ContractResult GetContractByAddress (string chainAddressOrName, string contractAddress)
         {
     
             var path = "/api/v1/GetContractByAddress";
@@ -146,12 +146,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (ContractResult) ApiClient.Deserialize(response.Content, typeof(ContractResult), response.Headers);
         }
@@ -162,7 +162,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="contractName"></param>
         /// <returns>ContractResult</returns>
-        public IList<ContractResult> ApiV1GetContractsGet (string chainAddressOrName)
+        public IList<ContractResult> GetContracts (string chainAddressOrName)
         {
     
             var path = "/api/v1/GetContracts";
@@ -180,12 +180,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetContractsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetContractsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (IList<ContractResult>) ApiClient.Deserialize(response.Content, typeof(IList<ContractResult>), response.Headers);
         }

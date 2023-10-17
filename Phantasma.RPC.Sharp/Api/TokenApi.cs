@@ -16,7 +16,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDtext"></param>
         /// <param name="extended"></param>
         /// <returns>TokenDataResult</returns>
-        TokenDataResult ApiV1GetNFTGet (string symbol, string iDtext, bool? extended);
+        TokenDataResult GetNFT (string symbol, string iDtext, bool? extended);
         /// <summary>
         ///  
         /// </summary>
@@ -24,7 +24,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDText"></param>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenDataResult&gt;</returns>
-        List<TokenDataResult> ApiV1GetNFTsGet (string symbol, string iDText, bool? extended);
+        List<TokenDataResult> GetNFTs (string symbol, string iDText, bool? extended);
         /// <summary>
         ///  
         /// </summary>
@@ -32,27 +32,27 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="tokenSymbol"></param>
         /// <param name="chainInput"></param>
         /// <returns>BalanceResult</returns>
-        BalanceResult ApiV1GetTokenBalanceGet (string account, string tokenSymbol, string chainInput);
+        BalanceResult GetTokenBalance (string account, string tokenSymbol, string chainInput);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>TokenDataResult</returns>
-        TokenDataResult ApiV1GetTokenDataGet (string symbol, string iDtext);
+        TokenDataResult GetTokenData (string symbol, string iDtext);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="extended"></param>
         /// <returns>TokenResult</returns>
-        TokenResult ApiV1GetTokenGet (string symbol, bool? extended);
+        TokenResult GetToken (string symbol, bool? extended);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenResult&gt;</returns>
-        List<TokenResult> ApiV1GetTokensGet (bool? extended);
+        List<TokenResult> GetTokens (bool? extended);
     }
   
     /// <summary>
@@ -115,7 +115,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDtext"></param>
         /// <param name="extended"></param>
         /// <returns>TokenDataResult</returns>
-        public TokenDataResult ApiV1GetNFTGet (string symbol, string iDtext, bool? extended)
+        public TokenDataResult GetNFT (string symbol, string iDtext, bool? extended)
         {
     
             var path = "/api/v1/GetNFT";
@@ -135,12 +135,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNFTGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNFTGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (TokenDataResult) ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
         }
@@ -152,7 +152,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="iDText"></param>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenDataResult&gt;</returns>
-        public List<TokenDataResult> ApiV1GetNFTsGet (string symbol, string iDText, bool? extended)
+        public List<TokenDataResult> GetNFTs (string symbol, string iDText, bool? extended)
         {
     
             var path = "/api/v1/GetNFTs";
@@ -172,12 +172,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNFTsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNFTsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNFTsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<TokenDataResult>) ApiClient.Deserialize(response.Content, typeof(List<TokenDataResult>), response.Headers);
         }
@@ -189,7 +189,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="tokenSymbol"></param>
         /// <param name="chainInput"></param>
         /// <returns>BalanceResult</returns>
-        public BalanceResult ApiV1GetTokenBalanceGet (string account, string tokenSymbol, string chainInput)
+        public BalanceResult GetTokenBalance (string account, string tokenSymbol, string chainInput)
         {
     
             var path = "/api/v1/GetTokenBalance";
@@ -209,12 +209,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenBalanceGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenBalanceGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenBalanceGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenBalanceGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (BalanceResult) ApiClient.Deserialize(response.Content, typeof(BalanceResult), response.Headers);
         }
@@ -225,7 +225,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>TokenDataResult</returns>
-        public TokenDataResult ApiV1GetTokenDataGet (string symbol, string iDtext)
+        public TokenDataResult GetTokenData (string symbol, string iDtext)
         {
     
             var path = "/api/v1/GetTokenData";
@@ -244,12 +244,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenDataGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenDataGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenDataGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenDataGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (TokenDataResult) ApiClient.Deserialize(response.Content, typeof(TokenDataResult), response.Headers);
         }
@@ -260,7 +260,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="symbol"></param>
         /// <param name="extended"></param>
         /// <returns>TokenResult</returns>
-        public TokenResult ApiV1GetTokenGet (string symbol, bool? extended)
+        public TokenResult GetToken (string symbol, bool? extended)
         {
     
             var path = "/api/v1/GetToken";
@@ -279,12 +279,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokenGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokenGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (TokenResult) ApiClient.Deserialize(response.Content, typeof(TokenResult), response.Headers);
         }
@@ -294,7 +294,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>List&lt;TokenResult&gt;</returns>
-        public List<TokenResult> ApiV1GetTokensGet (bool? extended)
+        public List<TokenResult> GetTokens (bool? extended)
         {
     
             var path = "/api/v1/GetTokens";
@@ -312,12 +312,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokensGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokensGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetTokensGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetTokensGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<TokenResult>) ApiClient.Deserialize(response.Content, typeof(List<TokenResult>), response.Headers);
         }

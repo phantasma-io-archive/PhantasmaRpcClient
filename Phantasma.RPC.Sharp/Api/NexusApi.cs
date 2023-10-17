@@ -14,7 +14,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>NexusResult</returns>
-        NexusResult ApiV1GetNexusGet (bool? extended);
+        NexusResult GetNexus (bool? extended);
     }
   
     /// <summary>
@@ -75,7 +75,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="extended"></param>
         /// <returns>NexusResult</returns>
-        public NexusResult ApiV1GetNexusGet (bool? extended)
+        public NexusResult GetNexus (bool? extended)
         {
     
             var path = "/api/v1/GetNexus";
@@ -93,12 +93,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNexusGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNexusGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetNexusGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetNexusGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (NexusResult) ApiClient.Deserialize(response.Content, typeof(NexusResult), response.Headers);
         }

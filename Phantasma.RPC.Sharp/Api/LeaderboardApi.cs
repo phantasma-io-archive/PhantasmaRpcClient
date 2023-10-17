@@ -14,7 +14,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="name"></param>
         /// <returns>LeaderboardResult</returns>
-        LeaderboardResult ApiV1GetLeaderboardGet (string name);
+        LeaderboardResult GetLeaderboard (string name);
     }
   
     /// <summary>
@@ -75,7 +75,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="name"></param>
         /// <returns>LeaderboardResult</returns>
-        public LeaderboardResult ApiV1GetLeaderboardGet (string name)
+        public LeaderboardResult GetLeaderboard (string name)
         {
     
             var path = "/api/v1/GetLeaderboard";
@@ -93,12 +93,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetLeaderboardGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetLeaderboardGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetLeaderboardGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetLeaderboardGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (LeaderboardResult) ApiClient.Deserialize(response.Content, typeof(LeaderboardResult), response.Headers);
         }

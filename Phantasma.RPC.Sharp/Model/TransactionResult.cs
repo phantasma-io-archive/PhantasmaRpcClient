@@ -78,6 +78,13 @@ namespace Phantasma.RPC.Sharp.Model {
     [DataMember(Name="fee", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "fee")]
     public string Fee { get; set; }
+    
+    /// <summary>
+    /// Gets or Sets State
+    /// </summary>
+    [DataMember(Name="state", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "state")]
+    public string State { get; set; }
 
     /// <summary>
     /// Gets or Sets Signatures
@@ -85,7 +92,42 @@ namespace Phantasma.RPC.Sharp.Model {
     [DataMember(Name="signatures", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "signatures")]
     public List<SignatureResult> Signatures { get; set; }
-
+    
+    // <summary>
+    /// Gets or Sets Sender
+    /// </summary>
+    [DataMember(Name="sender", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "sender")]
+    public string Sender { get; set; }
+    
+    // <summary>
+    /// Gets or Sets gasPayer
+    /// </summary>
+    [DataMember(Name="gasPayer", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "gasPayer")]
+    public string GasPayer { get; set; }
+    
+    // <summary>
+    /// Gets or Sets gasTarget
+    /// </summary>
+    [DataMember(Name="gasTarget", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "gasTarget")]
+    public string GasTarget { get; set; }
+    
+    // <summary>
+    /// Gets or Sets gasPrice
+    /// </summary>
+    [DataMember(Name="gasPrice", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "gasPrice")]
+    public string GasPrice { get; set; }
+    
+    // <summary>
+    /// Gets or Sets gasLimit
+    /// </summary>
+    [DataMember(Name="gasLimit", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "gasLimit")]
+    public string GasLimit { get; set; }
+    
     /// <summary>
     /// Gets or Sets Expiration
     /// </summary>

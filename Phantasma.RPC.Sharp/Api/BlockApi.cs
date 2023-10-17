@@ -14,53 +14,53 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="blockHash"></param>
         /// <returns>BlockResult</returns>
-        BlockResult ApiV1GetBlockByHashGet (string blockHash);
+        BlockResult GetBlockByHash (string blockHash);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>BlockResult</returns>
-        BlockResult ApiV1GetBlockByHeightGet (string chainInput, int? height);
+        BlockResult GetBlockByHeight (string chainInput, int? height);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <returns>string</returns>
-        string ApiV1GetBlockHeightGet (string chainInput);
+        string GetBlockHeight (string chainInput);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainAddressOrName"></param>
         /// <param name="blockHash"></param>
         /// <returns>int?</returns>
-        int? ApiV1GetBlockTransactionCountByHashGet (string chainAddressOrName, string blockHash);
+        int? GetBlockTransactionCountByHash (string chainAddressOrName, string blockHash);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="blockHash"></param>
         /// <returns>string</returns>
-        string ApiV1GetRawBlockByHashGet (string blockHash);
+        string GetRawBlockByHash (string blockHash);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>string</returns>
-        string ApiV1GetRawBlockByHeightGet (string chainInput, int? height);
+        string GetRawBlockByHeight (string chainInput, int? height);
         
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <returns>BlockResult</returns>
-        BlockResult ApiV1GetLatestBlock (string chainInput);
+        BlockResult GetLatestBlock (string chainInput);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <returns>string</returns>
-        string ApiV1GetRawLatestBlock (string chainInput);
+        string GetRawLatestBlock (string chainInput);
     }
   
     /// <summary>
@@ -121,7 +121,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="blockHash"></param>
         /// <returns>BlockResult</returns>
-        public BlockResult ApiV1GetBlockByHashGet (string blockHash)
+        public BlockResult GetBlockByHash (string blockHash)
         {
     
             var path = "/api/v1/GetBlockByHash";
@@ -139,12 +139,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHashGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHashGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHashGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHashGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (BlockResult) ApiClient.Deserialize(response.Content, typeof(BlockResult), response.Headers);
         }
@@ -155,7 +155,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>BlockResult</returns>
-        public BlockResult ApiV1GetBlockByHeightGet (string chainInput, int? height)
+        public BlockResult GetBlockByHeight (string chainInput, int? height)
         {
     
             var path = "/api/v1/GetBlockByHeight";
@@ -174,12 +174,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHeightGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (BlockResult) ApiClient.Deserialize(response.Content, typeof(BlockResult), response.Headers);
         }
@@ -190,7 +190,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>BlockResult</returns>
-        public BlockResult ApiV1GetLatestBlock (string chainInput)
+        public BlockResult GetLatestBlock (string chainInput)
         {
     
             var path = "/api/v1/GetBlockByHeight";
@@ -208,12 +208,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHeightGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (BlockResult) ApiClient.Deserialize(response.Content, typeof(BlockResult), response.Headers);
         }
@@ -223,7 +223,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="chainInput"></param>
         /// <returns>string</returns>
-        public string ApiV1GetBlockHeightGet (string chainInput)
+        public string GetBlockHeight (string chainInput)
         {
     
             var path = "/api/v1/GetBlockHeight";
@@ -241,12 +241,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockHeightGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockHeightGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockHeightGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
@@ -257,7 +257,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="blockHash"></param>
         /// <returns>int?</returns>
-        public int? ApiV1GetBlockTransactionCountByHashGet (string chainAddressOrName, string blockHash)
+        public int? GetBlockTransactionCountByHash (string chainAddressOrName, string blockHash)
         {
     
             var path = "/api/v1/GetBlockTransactionCountByHash";
@@ -276,12 +276,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockTransactionCountByHashGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockTransactionCountByHashGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetBlockTransactionCountByHashGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetBlockTransactionCountByHashGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (int?) ApiClient.Deserialize(response.Content, typeof(int?), response.Headers);
         }
@@ -291,7 +291,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="blockHash"></param>
         /// <returns>string</returns>
-        public string ApiV1GetRawBlockByHashGet (string blockHash)
+        public string GetRawBlockByHash (string blockHash)
         {
     
             var path = "/api/v1/GetRawBlockByHash";
@@ -309,12 +309,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHashGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHashGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHashGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHashGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
@@ -325,7 +325,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>string</returns>
-        public string ApiV1GetRawBlockByHeightGet (string chainInput, int? height)
+        public string GetRawBlockByHeight (string chainInput, int? height)
         {
     
             var path = "/api/v1/GetRawBlockByHeight";
@@ -344,12 +344,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHeightGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
@@ -360,7 +360,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainInput"></param>
         /// <param name="height"></param>
         /// <returns>string</returns>
-        public string ApiV1GetRawLatestBlock (string chainInput)
+        public string GetRawLatestBlock (string chainInput)
         {
     
             var path = "/api/v1/GetRawBlockByHeight";
@@ -378,12 +378,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHeightGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetRawBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetRawBlockByHeightGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

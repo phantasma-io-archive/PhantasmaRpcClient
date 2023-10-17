@@ -13,11 +13,11 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        List<PlatformResult> ApiV1GetPlatformsGet ();
+        List<PlatformResult> GetPlatforms ();
         
-        PlatformResult ApiV1GetPlatform (string platform);
+        PlatformResult GetPlatform (string platform);
         
-        PlatformResult ApiV1GetInterop (string platform);
+        PlatformResult GetInterop (string platform);
     }
   
     /// <summary>
@@ -77,7 +77,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public List<PlatformResult> ApiV1GetPlatformsGet ()
+        public List<PlatformResult> GetPlatforms ()
         {
             var path = "/api/v1/GetPlatforms";
             path = path.Replace("{format}", "json");
@@ -93,12 +93,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<PlatformResult>) ApiClient.Deserialize(response.Content, typeof(List<PlatformResult>), response.Headers);
         }
@@ -107,7 +107,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public PlatformResult ApiV1GetPlatform (string platform)
+        public PlatformResult GetPlatform (string platform)
         {
             var path = "/api/v1/GetPlatform";
             path = path.Replace("{format}", "json");
@@ -124,12 +124,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetPlatformsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
         }
@@ -138,7 +138,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;PlatformResult&gt;</returns>
-        public PlatformResult ApiV1GetInterop (string platform)
+        public PlatformResult GetInterop (string platform)
         {
             var path = "/api/v1/GetInterop";
             path = path.Replace("{format}", "json");
@@ -155,12 +155,12 @@ namespace Phantasma.RPC.Sharp.Api
             String[] authSettings = new String[] {  };
     
             // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetInterop: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetInterop: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetInterop: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetInterop: " + response.ErrorMessage, response.ErrorMessage);
     
             return (PlatformResult) ApiClient.Deserialize(response.Content, typeof(PlatformResult), response.Headers);
         }

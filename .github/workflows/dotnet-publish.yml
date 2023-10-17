@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 env:
-  GITHUB_TOKEN: ${{ ecrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:

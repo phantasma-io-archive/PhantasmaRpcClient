@@ -13,7 +13,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;ChainResult&gt;</returns>
-        List<ChainResult> ApiV1GetChainsGet ();
+        List<ChainResult> GetChains ();
     }
   
     /// <summary>
@@ -73,7 +73,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;ChainResult&gt;</returns>
-        public List<ChainResult> ApiV1GetChainsGet ()
+        public List<ChainResult> GetChains ()
         {
     
             var path = "/api/v1/GetChains";
@@ -93,9 +93,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetChainsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetChainsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetChainsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetChainsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<ChainResult>) ApiClient.Deserialize(response.Content, typeof(List<ChainResult>), response.Headers);
         }

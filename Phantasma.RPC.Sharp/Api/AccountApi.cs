@@ -15,26 +15,26 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="account"></param>
         /// <returns>AccountResult</returns>
-        AccountResult ApiV1GetAccountGet (string account);
+        AccountResult GetAccount (string account);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="accountText"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        List<AccountResult> ApiV1GetAccountsGet (string accountText);
+        List<AccountResult> GetAccounts (string accountText);
         
         /// <summary>
         ///  
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        List<AccountResult> ApiV1GetAddressesBySymbol (string symbol);
+        List<AccountResult> GetAddressesBySymbol (string symbol);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="name"></param>
         /// <returns>string</returns>
-        string ApiV1LookUpNameGet (string name);
+        string LookUpName (string name);
     }
   
     /// <summary>
@@ -95,7 +95,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="account"></param>
         /// <returns>AccountResult</returns>
-        public AccountResult ApiV1GetAccountGet (string account)
+        public AccountResult GetAccount (string account)
         {
     
             var path = "/api/v1/GetAccount";
@@ -116,9 +116,9 @@ namespace Phantasma.RPC.Sharp.Api
             RestResponseBase response = (RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (AccountResult) ApiClient.Deserialize(response.Content, typeof(AccountResult), response.Headers);
         }
@@ -128,7 +128,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="accountText"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        public List<AccountResult> ApiV1GetAccountsGet (string accountText)
+        public List<AccountResult> GetAccounts (string accountText)
         {
     
             var path = "/api/v1/GetAccounts";
@@ -149,9 +149,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<AccountResult>) ApiClient.Deserialize(response.Content, typeof(List<AccountResult>), response.Headers);
         }
@@ -161,7 +161,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="accountText"></param>
         /// <returns>List&lt;AccountResult&gt;</returns>
-        public List<AccountResult> ApiV1GetAddressesBySymbol (string symbol)
+        public List<AccountResult> GetAddressesBySymbol (string symbol)
         {
     
             var path = "/api/v1/GetAccounts";
@@ -182,9 +182,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAccountsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAccountsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<AccountResult>) ApiClient.Deserialize(response.Content, typeof(List<AccountResult>), response.Headers);
         }
@@ -194,7 +194,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="name"></param>
         /// <returns>string</returns>
-        public string ApiV1LookUpNameGet (string name)
+        public string LookUpName (string name)
         {
     
             var path = "/api/v1/LookUpName";
@@ -215,9 +215,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1LookUpNameGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling LookUpNameGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1LookUpNameGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling LookUpNameGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

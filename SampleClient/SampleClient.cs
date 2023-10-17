@@ -38,10 +38,10 @@ namespace SampleClient
 
         static void Main(string[] args)
         {
-            var client = new ApiClient(@"http://localhost:5101/");
+            var client = new ApiClient(@"http://localhost:7077/");
             var accountAPI = new AccountApi(client);
 
-            var account = accountAPI.ApiV1GetAccountGet("P2K56BVqGndVhEmyaX9CVcqGHGkAfKUgeTnK1LfDjddqFPn");
+            var account = accountAPI.GetAccount("P2K9zmyFDNGN6n6hHiTUAz6jqn29s5G1SWLiXwCVQcpHcQb");
 
             Console.WriteLine("Result: " + account.Name);
             foreach (var balance in account.Balances)

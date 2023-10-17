@@ -13,7 +13,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;ValidatorResult&gt;</returns>
-        List<ValidatorResult> ApiV1GetValidatorsGet ();
+        List<ValidatorResult> GetValidators ();
     }
   
     /// <summary>
@@ -73,7 +73,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>List&lt;ValidatorResult&gt;</returns>
-        public List<ValidatorResult> ApiV1GetValidatorsGet ()
+        public List<ValidatorResult> GetValidators ()
         {
     
             var path = "/api/v1/GetValidators";
@@ -93,9 +93,9 @@ namespace Phantasma.RPC.Sharp.Api
             RestResponseBase response = (RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetValidatorsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetValidatorsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetValidatorsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetValidatorsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (List<ValidatorResult>) ApiClient.Deserialize(response.Content, typeof(List<ValidatorResult>), response.Headers);
         }

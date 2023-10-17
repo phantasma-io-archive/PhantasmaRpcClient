@@ -14,20 +14,20 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        OrganizationResult ApiV1GetOrganization (string ID);
+        OrganizationResult GetOrganization (string ID);
         
         /// <summary>
         ///  
         /// </summary>
         /// <returns>OrganizationResult</returns>
-        IList<OrganizationResult> ApiV1GetOrganizations ();
+        IList<OrganizationResult> GetOrganizations ();
         
         /// <summary>
         ///  
         /// </summary>
         /// <param name="name"></param>
         /// <returns>OrganizationResult</returns>
-        OrganizationResult ApiV1GetOrganizationByName (string name);
+        OrganizationResult GetOrganizationByName (string name);
     }
   
     /// <summary>
@@ -88,7 +88,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        public OrganizationResult ApiV1GetOrganization (string ID)
+        public OrganizationResult GetOrganization (string ID)
         {
     
             var path = "/api/v1/GetOrganization";
@@ -109,9 +109,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizationGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizationGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (OrganizationResult) ApiClient.Deserialize(response.Content, typeof(OrganizationResult), response.Headers);
         }
@@ -122,7 +122,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        public OrganizationResult ApiV1GetOrganizationByName (string name)
+        public OrganizationResult GetOrganizationByName (string name)
         {
     
             var path = "/api/v1/GetOrganizationByName";
@@ -143,9 +143,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationByName: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizationByName: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizationByName: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizationByName: " + response.ErrorMessage, response.ErrorMessage);
     
             return (OrganizationResult) ApiClient.Deserialize(response.Content, typeof(OrganizationResult), response.Headers);
         }
@@ -155,7 +155,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="ID"></param>
         /// <returns>OrganizationResult</returns>
-        public IList<OrganizationResult> ApiV1GetOrganizations ()
+        public IList<OrganizationResult> GetOrganizations ()
         {
     
             var path = "/api/v1/GetOrganizations";
@@ -174,9 +174,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizations: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizations: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetOrganizations: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetOrganizations: " + response.ErrorMessage, response.ErrorMessage);
     
             return (IList<OrganizationResult>) ApiClient.Deserialize(response.Content, typeof(IList<OrganizationResult>), response.Headers);
         }

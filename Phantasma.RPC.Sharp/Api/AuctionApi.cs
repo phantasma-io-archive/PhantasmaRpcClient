@@ -16,14 +16,14 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>AuctionResult</returns>
-        AuctionResult ApiV1GetAuctionGet (string chainAddressOrName, string symbol, string iDtext);
+        AuctionResult GetAuction (string chainAddressOrName, string symbol, string iDtext);
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainAddressOrName"></param>
         /// <param name="symbol"></param>
         /// <returns>int?</returns>
-        int? ApiV1GetAuctionsCountGet (string chainAddressOrName, string symbol);
+        int? GetAuctionsCount (string chainAddressOrName, string symbol);
         /// <summary>
         ///  
         /// </summary>
@@ -32,7 +32,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns>PaginatedResult</returns>
-        PaginatedResult ApiV1GetAuctionsGet (string chainAddressOrName, string symbol, int? page, int? pageSize);
+        PaginatedResult GetAuctions (string chainAddressOrName, string symbol, int? page, int? pageSize);
     }
   
     /// <summary>
@@ -95,7 +95,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="symbol"></param>
         /// <param name="iDtext"></param>
         /// <returns>AuctionResult</returns>
-        public AuctionResult ApiV1GetAuctionGet (string chainAddressOrName, string symbol, string iDtext)
+        public AuctionResult GetAuction (string chainAddressOrName, string symbol, string iDtext)
         {
     
             var path = "/api/v1/GetAuction";
@@ -118,9 +118,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (AuctionResult) ApiClient.Deserialize(response.Content, typeof(AuctionResult), response.Headers);
         }
@@ -131,7 +131,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="chainAddressOrName"></param>
         /// <param name="symbol"></param>
         /// <returns>int?</returns>
-        public int? ApiV1GetAuctionsCountGet (string chainAddressOrName, string symbol)
+        public int? GetAuctionsCount (string chainAddressOrName, string symbol)
         {
     
             var path = "/api/v1/GetAuctionsCount";
@@ -153,9 +153,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionsCountGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionsCountGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionsCountGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionsCountGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (int?) ApiClient.Deserialize(response.Content, typeof(int?), response.Headers);
         }
@@ -168,7 +168,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns>PaginatedResult</returns>
-        public PaginatedResult ApiV1GetAuctionsGet (string chainAddressOrName, string symbol, int? page, int? pageSize)
+        public PaginatedResult GetAuctions (string chainAddressOrName, string symbol, int? page, int? pageSize)
         {
     
             var path = "/api/v1/GetAuctions";
@@ -192,9 +192,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionsGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetAuctionsGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetAuctionsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (PaginatedResult) ApiClient.Deserialize(response.Content, typeof(PaginatedResult), response.Headers);
         }

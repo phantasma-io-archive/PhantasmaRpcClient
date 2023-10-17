@@ -13,13 +13,13 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>string</returns>
-        string ApiV1GetLatestSaleHashGet ();
+        string GetLatestSaleHash ();
         /// <summary>
         ///  
         /// </summary>
         /// <param name="hashText"></param>
         /// <returns>CrowdsaleResult</returns>
-        CrowdsaleResult ApiV1GetSaleGet (string hashText);
+        CrowdsaleResult GetSale (string hashText);
     }
   
     /// <summary>
@@ -79,7 +79,7 @@ namespace Phantasma.RPC.Sharp.Api
         ///  
         /// </summary>
         /// <returns>string</returns>
-        public string ApiV1GetLatestSaleHashGet ()
+        public string GetLatestSaleHash ()
         {
     
             var path = "/api/v1/GetLatestSaleHash";
@@ -99,9 +99,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetLatestSaleHashGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetLatestSaleHashGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetLatestSaleHashGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetLatestSaleHashGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
@@ -111,7 +111,7 @@ namespace Phantasma.RPC.Sharp.Api
         /// </summary>
         /// <param name="hashText"></param>
         /// <returns>CrowdsaleResult</returns>
-        public CrowdsaleResult ApiV1GetSaleGet (string hashText)
+        public CrowdsaleResult GetSale (string hashText)
         {
     
             var path = "/api/v1/GetSale";
@@ -132,9 +132,9 @@ namespace Phantasma.RPC.Sharp.Api
              RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetSaleGet: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetSaleGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ApiV1GetSaleGet: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling GetSaleGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (CrowdsaleResult) ApiClient.Deserialize(response.Content, typeof(CrowdsaleResult), response.Headers);
         }

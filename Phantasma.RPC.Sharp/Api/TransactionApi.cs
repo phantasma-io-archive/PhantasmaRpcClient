@@ -15,8 +15,8 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="account"></param>
         /// <param name="chainInput"></param>
         /// <returns>int?</returns>
-        int? GetAddressTransactionCount (string account, string chainInput);
-        
+        int? GetAddressTransactionCount(string account, string chainInput);
+
         /// <summary>
         ///  
         /// </summary>
@@ -24,8 +24,8 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns>PaginatedResult</returns>
-        PaginatedResult GetAddressTransactions (string account, int? page, int? pageSize);
-        
+        PaginatedResult GetAddressTransactions(string account, int? page, int? pageSize);
+
         /// <summary>
         ///  
         /// </summary>
@@ -33,31 +33,31 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="blockHash"></param>
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
-        TransactionResult GetTransactionByBlockHashAndIndex (string chainAddressOrName, string blockHash, int? index);
-        
+        TransactionResult GetTransactionByBlockHashAndIndex(string chainAddressOrName, string blockHash, int? index);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="txData"></param>
         /// <returns>TransactionResult</returns>
-        string SendRawTransaction (string txData);
-        
+        string SendRawTransaction(string txData);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="chainInput"></param>
         /// <param name="scriptData"></param>
         /// <returns>TransactionResult</returns>
-        string InvokeRawScript (string chainInput, string scriptData);
-        
+        string InvokeRawScript(string chainInput, string scriptData);
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="hashText"></param>
         /// <returns>TransactionResult</returns>
-        TransactionResult GetTransaction (string hashText);
+        TransactionResult GetTransaction(string hashText);
     }
-  
+
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
@@ -71,11 +71,11 @@ namespace Phantasma.RPC.Sharp.Api
         public TransactionApi(ApiClient apiClient = null)
         {
             if (apiClient == null) // use the default one in Configuration
-                this.ApiClient = Configuration.DefaultApiClient; 
+                this.ApiClient = Configuration.DefaultApiClient;
             else
                 this.ApiClient = apiClient;
         }
-    
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionApi"/> class.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient = new ApiClient(basePath);
         }
-    
+
         /// <summary>
         /// Sets the base path of the API client.
         /// </summary>
@@ -94,7 +94,7 @@ namespace Phantasma.RPC.Sharp.Api
         {
             this.ApiClient.BasePath = basePath;
         }
-    
+
         /// <summary>
         /// Gets the base path of the API client.
         /// </summary>
@@ -104,48 +104,51 @@ namespace Phantasma.RPC.Sharp.Api
         {
             return this.ApiClient.BasePath;
         }
-    
+
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
         /// <value>An instance of the ApiClient</value>
-        public ApiClient ApiClient {get; set;}
-    
+        public ApiClient ApiClient { get; set; }
+
         /// <summary>
         ///  
         /// </summary>
         /// <param name="account"></param>
         /// <param name="chainInput"></param>
         /// <returns>int?</returns>
-        public int? GetAddressTransactionCount (string account, string chainInput)
+        public int? GetAddressTransactionCount(string account, string chainInput)
         {
-    
             var path = "/api/v1/GetAddressTransactionCount";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
- if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
-                                        
+
+            if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
+            if (chainInput != null)
+                queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetAddressTransactionCountGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetAddressTransactionCountGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetAddressTransactionCountGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (int?) ApiClient.Deserialize(response.Content, typeof(int?), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetAddressTransactionCountGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (int?)ApiClient.Deserialize(response.Content, typeof(int?), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
@@ -153,36 +156,38 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns>PaginatedResult</returns>
-        public PaginatedResult GetAddressTransactions (string account, int? page, int? pageSize)
+        public PaginatedResult GetAddressTransactions(string account, int? page, int? pageSize)
         {
-    
             var path = "/api/v1/GetAddressTransactions";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
- if (page != null) queryParams.Add("page", ApiClient.ParameterToString(page)); // query parameter
- if (pageSize != null) queryParams.Add("pageSize", ApiClient.ParameterToString(pageSize)); // query parameter
-                                        
+
+            if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
+            if (page != null) queryParams.Add("page", ApiClient.ParameterToString(page)); // query parameter
+            if (pageSize != null) queryParams.Add("pageSize", ApiClient.ParameterToString(pageSize)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetAddressTransactionsGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetAddressTransactionsGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetAddressTransactionsGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (PaginatedResult) ApiClient.Deserialize(response.Content, typeof(PaginatedResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetAddressTransactionsGet: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (PaginatedResult)ApiClient.Deserialize(response.Content, typeof(PaginatedResult), response.Headers);
         }
-    
+
         /// <summary>
         ///  
         /// </summary>
@@ -190,36 +195,44 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="blockHash"></param>
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
-        public TransactionResult GetTransactionByBlockHashAndIndex (string chainAddressOrName, string blockHash, int? index)
+        public TransactionResult GetTransactionByBlockHashAndIndex(string chainAddressOrName, string blockHash,
+            int? index)
         {
-    
             var path = "/api/v1/GetTransactionByBlockHashAndIndex";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (chainAddressOrName != null) queryParams.Add("chainAddressOrName", ApiClient.ParameterToString(chainAddressOrName)); // query parameter
- if (blockHash != null) queryParams.Add("blockHash", ApiClient.ParameterToString(blockHash)); // query parameter
- if (index != null) queryParams.Add("index", ApiClient.ParameterToString(index)); // query parameter
-                                        
+
+            if (chainAddressOrName != null)
+                queryParams.Add("chainAddressOrName",
+                    ApiClient.ParameterToString(chainAddressOrName)); // query parameter
+            if (blockHash != null)
+                queryParams.Add("blockHash", ApiClient.ParameterToString(blockHash)); // query parameter
+            if (index != null) queryParams.Add("index", ApiClient.ParameterToString(index)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTransactionByBlockHashAndIndexGet: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTransactionByBlockHashAndIndexGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTransactionByBlockHashAndIndexGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (TransactionResult) ApiClient.Deserialize(response.Content, typeof(TransactionResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTransactionByBlockHashAndIndexGet: " + response.ErrorMessage,
+                    response.ErrorMessage);
+
+            return (TransactionResult)ApiClient.Deserialize(response.Content, typeof(TransactionResult),
+                response.Headers);
         }
-        
+
         /// <summary>
         ///  
         /// </summary>
@@ -227,35 +240,38 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="blockHash"></param>
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
-        public TransactionResult GetTransaction (string txHash)
+        public TransactionResult GetTransaction(string txHash)
         {
-    
             var path = "/api/v1/GetTransaction";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (txHash != null) queryParams.Add("txHash", ApiClient.ParameterToString(txHash)); // query parameter
-                                        
+
+            if (txHash != null) queryParams.Add("hashText", ApiClient.ParameterToString(txHash)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTransaction: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode, "Error calling GetTransaction: " + response.Content,
+                    response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling GetTransaction: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (TransactionResult) ApiClient.Deserialize(response.Content, typeof(TransactionResult), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling GetTransaction: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (TransactionResult)ApiClient.Deserialize(response.Content, typeof(TransactionResult),
+                response.Headers);
         }
-    
-        
+
+
         /// <summary>
         ///  
         /// </summary>
@@ -263,33 +279,36 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="blockHash"></param>
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
-        public string SendRawTransaction (string txData)
+        public string SendRawTransaction(string txData)
         {
             var path = "/api/v1/SendRawTransaction";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
+
             if (txData != null) queryParams.Add("txData", ApiClient.ParameterToString(txData)); // query parameter
-                                        
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling SendRawTransaction: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling SendRawTransaction: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling SendRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling SendRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (string)ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
-        
+
         /// <summary>
         ///  
         /// </summary>
@@ -297,32 +316,37 @@ namespace Phantasma.RPC.Sharp.Api
         /// <param name="blockHash"></param>
         /// <param name="index"></param>
         /// <returns>TransactionResult</returns>
-        public string InvokeRawScript (string chainInput, string scriptData)
+        public string InvokeRawScript(string chainInput, string scriptData)
         {
             var path = "/api/v1/InvokeRawTransaction";
             path = path.Replace("{format}", "json");
-                
+
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-            if (chainInput != null) queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
-            if (scriptData != null) queryParams.Add("scriptData", ApiClient.ParameterToString(scriptData)); // query parameter
-                                        
+
+            if (chainInput != null)
+                queryParams.Add("chainInput", ApiClient.ParameterToString(chainInput)); // query parameter
+            if (scriptData != null)
+                queryParams.Add("scriptData", ApiClient.ParameterToString(scriptData)); // query parameter
+
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
-    
+            String[] authSettings = new String[] { };
+
             // make the HTTP request
-             RestResponseBase response = ( RestResponseBase) ApiClient.CallApi(path, Method.Get, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
+            RestResponseBase response = (RestResponseBase)ApiClient.CallApi(path, Method.Get, queryParams, postBody,
+                headerParams, formParams, fileParams, authSettings);
+
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling InvokeRawTransaction: " + response.Content, response.Content);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling InvokeRawTransaction: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling InvokeRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+                throw new ApiException((int)response.StatusCode,
+                    "Error calling InvokeRawTransaction: " + response.ErrorMessage, response.ErrorMessage);
+
+            return (string)ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     }
 }

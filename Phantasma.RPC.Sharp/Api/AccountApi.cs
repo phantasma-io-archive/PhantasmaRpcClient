@@ -106,8 +106,8 @@ namespace Phantasma.RPC.Sharp.Api
             var formParams = new Dictionary<String, String>();
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
-    
-             if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
+
+            if (account != null) queryParams.Add("account", ApiClient.ParameterToString(account)); // query parameter
                                         
             // authentication setting, if any
             String[] authSettings = new String[] {  };

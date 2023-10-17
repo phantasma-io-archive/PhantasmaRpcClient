@@ -153,7 +153,13 @@ namespace Phantasma.RPC.Sharp.Model {
       sb.Append("  Events: ").Append(Events).Append("\n");
       sb.Append("  Result: ").Append(Result).Append("\n");
       sb.Append("  Fee: ").Append(Fee).Append("\n");
+      sb.Append("  State: ").Append(State).Append("\n");
       sb.Append("  Signatures: ").Append(Signatures).Append("\n");
+      sb.Append("  Sender: ").Append(Sender).Append("\n");
+      sb.Append("  GasPayer: ").Append(GasPayer).Append("\n");
+      sb.Append("  GasTarget: ").Append(GasTarget).Append("\n");
+      sb.Append("  GasPrice: ").Append(GasPrice).Append("\n");
+      sb.Append("  GasLimit: ").Append(GasLimit).Append("\n");
       sb.Append("  Expiration: ").Append(Expiration).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

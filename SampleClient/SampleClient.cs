@@ -43,6 +43,7 @@ namespace SampleClient
 
             var account = accountAPI.GetAccount("P2K9zmyFDNGN6n6hHiTUAz6jqn29s5G1SWLiXwCVQcpHcQb");
 
+            GetTransaction(client);
             Console.WriteLine("Result: " + account.Name);
             foreach (var balance in account.Balances)
             {
@@ -50,6 +51,15 @@ namespace SampleClient
                 var amount = ToDecimal(val, balance.Decimals.Value);
                 Console.WriteLine($"{amount} {balance.Symbol}");
             }
+        }
+
+        static void GetTransaction(ApiClient client)
+        {
+            var transactionApi = new TransactionApi(client);
+            var transaction =
+                transactionApi.GetTransaction("59B903FAE1864EBE9CBA0C767C1D1568138652A97D522FA7B3AE0F38CC6D1CD0");
+            
+            Console.WriteLine("Result: " + transaction);
         }
     }
 }

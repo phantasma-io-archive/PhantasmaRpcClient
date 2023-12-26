@@ -23,6 +23,13 @@ namespace Phantasma.RPC.Sharp.Model
         [DataMember(Name = "contract", EmitDefaultValue = false)]
         [JsonProperty(PropertyName = "contract")]
         public string Contract { get; set; }
+        
+        /// <summary>
+        /// Gets or Sets Contract
+        /// </summary>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Kind
@@ -49,6 +56,7 @@ namespace Phantasma.RPC.Sharp.Model
             sb.Append("class EventResult {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Contract: ").Append(Contract).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
